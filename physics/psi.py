@@ -224,7 +224,7 @@ for i in range(5):
         d_tick=0.0
     else:
         d_tick=peak*(t**(1.0/gamma))/A0_3
-    label=fmt_density(d_tick)+"m-3"
+    label=fmt_density(d_tick)+" [m^-3]"
     ly=ty-4
     if ly<PY: ly=PY
     if ly>PY+LEG_H-8: ly=PY+LEG_H-8

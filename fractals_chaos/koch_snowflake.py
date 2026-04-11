@@ -15,7 +15,7 @@ def koch(length, depth):
 speed(0)
 hideturtle()
 penup()
-goto(-90, -50)
+goto(-90, 50)
 pendown()
 pencolor("blue")
 depth = int(input("Depth (1-4): "))

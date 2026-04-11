@@ -78,7 +78,6 @@ def draw_all(grid):
                 for dx in range(3):
                     set_pixel(px + dx, py + dy, col)
 
-
 if SEED:
     random.seed(SEED)
 grid = []
@@ -98,7 +97,7 @@ for gen in range(1, GENS + 1):
     draw_diff(prev, grid)
     for dy in range(10):
         for dx in range(72):
-            set_pixel(dx, dy, (150, 150, 150))
+            set_pixel(dx, dy, (200, 200, 200))
     draw_string(0, 0, "Gen " + str(gen), (0, 0, 200), "small")
     show_screen()
 
