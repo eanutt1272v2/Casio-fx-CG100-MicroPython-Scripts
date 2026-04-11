@@ -7,6 +7,56 @@ except ImportError:
     getkey = None
 
 
+def read_text(prompt, default=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw:
+            return raw
+        if default is not None:
+            return default
+        print("Please enter a value.")
+
+
+def read_int(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = int(raw)
+            except ValueError:
+                print("Invalid integer. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
+def read_float(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = float(raw)
+            except ValueError:
+                print("Invalid number. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
 def cmod(re, im):
     return math.sqrt(re * re + im * im)
 
@@ -45,11 +95,11 @@ def main():
     while True:
         print("1=Convert polar/rect  2=Multiply  3=Divide")
         print("4=De Moivre z^n  5=nth roots of unity  0=quit")
-        m = input("> ")
+        m = read_text("> ")
         if m == "0":
             break
         if m == "1":
-            raw = input("z = a+bi, enter a,b: ").split(",")
+            raw = read_text("z = a+bi, enter a,b: ").split(",")
             a, b = float(raw[0]), float(raw[1])
             r = cmod(a, b)
             theta = carg(a, b)
@@ -71,24 +121,24 @@ def main():
             axis([-r * 1.5, r * 1.5, -r * 1.5, r * 1.5])
             show()
         elif m == "2":
-            raw = input("z1 = a,b: ").split(",")
+            raw = read_text("z1 = a,b: ").split(",")
             a, b = float(raw[0]), float(raw[1])
-            raw = input("z2 = c,d: ").split(",")
+            raw = read_text("z2 = c,d: ").split(",")
             c, d = float(raw[0]), float(raw[1])
             re, im = cmul(a, b, c, d)
             print("z1*z2 =", fmt(re), "+", fmt(im), "i")
             print("Mod =", fmt(cmod(re, im)))
         elif m == "3":
-            raw = input("z1 = a,b: ").split(",")
+            raw = read_text("z1 = a,b: ").split(",")
             a, b = float(raw[0]), float(raw[1])
-            raw = input("z2 = c,d: ").split(",")
+            raw = read_text("z2 = c,d: ").split(",")
             c, d = float(raw[0]), float(raw[1])
             re, im = cdiv(a, b, c, d)
             print("z1/z2 =", fmt(re), "+", fmt(im), "i")
         elif m == "4":
-            raw = input("z = a,b: ").split(",")
+            raw = read_text("z = a,b: ").split(",")
             a, b = float(raw[0]), float(raw[1])
-            n = int(input("n: "))
+            n = read_int("n: ")
             re, im = cpow(a, b, n)
             print("z^" + str(n) + " =", fmt(re), "+", fmt(im), "i")
             print(
@@ -99,7 +149,7 @@ def main():
                 "deg",
             )
         elif m == "5":
-            n = int(input("n-th roots of unity: "))
+            n = read_int("n-th roots of unity: ")
             xs = [math.cos(2 * math.pi * k / n) for k in range(n)]
             ys = [math.sin(2 * math.pi * k / n) for k in range(n)]
             ts = [2 * math.pi * i / 100 for i in range(101)]

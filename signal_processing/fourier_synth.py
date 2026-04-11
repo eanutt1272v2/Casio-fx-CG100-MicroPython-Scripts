@@ -7,6 +7,56 @@ except ImportError:
     getkey = None
 
 
+def read_text(prompt, default=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw:
+            return raw
+        if default is not None:
+            return default
+        print("Please enter a value.")
+
+
+def read_int(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = int(raw)
+            except ValueError:
+                print("Invalid integer. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
+def read_float(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = float(raw)
+            except ValueError:
+                print("Invalid number. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
 def wait_for_exit():
     if getkey is not None:
         getkey()
@@ -16,9 +66,9 @@ def wait_for_exit():
 
 def main():
 
-    N = int(input("Harmonics N (e.g. 10): "))
+    N = read_int("Harmonics N (e.g. 10): ")
     print("1=Square  2=Sawtooth  3=Triangle  4=Custom")
-    choice = input("> ")
+    choice = read_text("> ")
 
     L = math.pi
     pts = 300
@@ -61,9 +111,9 @@ def main():
     else:
 
         print("Enter a0,a1..aN (cos coeffs) then b1..bN (sin coeffs)")
-        a0 = float(input("a0: "))
-        acoeffs = [float(input("a" + str(k) + ": ")) for k in range(1, N + 1)]
-        bcoeffs = [float(input("b" + str(k) + ": ")) for k in range(1, N + 1)]
+        a0 = read_float("a0: ")
+        acoeffs = [read_float("a" + str(k) + ": ") for k in range(1, N + 1)]
+        bcoeffs = [read_float("b" + str(k) + ": ") for k in range(1, N + 1)]
         ys = [
             a0 / 2
             + sum(

@@ -7,6 +7,56 @@ except ImportError:
     getkey = None
 
 
+def read_text(prompt, default=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw:
+            return raw
+        if default is not None:
+            return default
+        print("Please enter a value.")
+
+
+def read_int(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = int(raw)
+            except ValueError:
+                print("Invalid integer. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
+def read_float(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = float(raw)
+            except ValueError:
+                print("Invalid number. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
 _LC = (
     0.99999999999980993,
     676.5203681218851,
@@ -129,17 +179,17 @@ def cmap(t, rc, gc, bc):
     return (r, g, b)
 
 
-n = int(input("n (1..k): "))
-l = int(input("l (0..n-1): "))
-m = int(input("|m| (0..l): "))
-Z = float(input("Z (1=H): "))
-R = float(input("R [a0] (0=auto): "))
-exposure = float(input("exposure 0=auto +>bright: "))
+n = read_int("n (1..k): ")
+l = read_int("l (0..n-1): ")
+m = read_int("|m| (0..l): ")
+Z = read_float("Z (1=H): ")
+R = read_float("R [a0] (0=auto): ")
+exposure = read_float("exposure 0=auto +>bright: ")
 
 print("CMAPS:")
 for i in range(len(CMAPS)):
     print(str(i + 1) + " " + CMAPS[i][0])
-cm_idx = int(input("Select (1-" + str(len(CMAPS)) + "): ")) - 1
+cm_idx = read_int("Select (1-" + str(len(CMAPS)) + "): ") - 1
 if cm_idx < 0 or cm_idx >= len(CMAPS):
     cm_idx = 0
 cm_name, RC, GC, BC = CMAPS[cm_idx]

@@ -7,6 +7,56 @@ except ImportError:
     getkey = None
 
 
+def read_text(prompt, default=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw:
+            return raw
+        if default is not None:
+            return default
+        print("Please enter a value.")
+
+
+def read_int(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = int(raw)
+            except ValueError:
+                print("Invalid integer. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
+def read_float(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = float(raw)
+            except ValueError:
+                print("Invalid number. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
 CMAPS = [
     (
         "cividis",
@@ -113,13 +163,13 @@ def wait_for_exit():
 
 
 def main():
-    cr = float(input("cr (-0.75): ") or "-0.75")
-    ci = float(input("ci (0.0): ") or "0.0")
-    R = float(input("R (2.0): ") or "2.0")
+    cr = read_float("cr (-0.75): ", default="-0.75")
+    ci = read_float("ci (0.0): ", default="0.0")
+    R = read_float("R (2.0): ", default="2.0")
     if R <= 0.0:
         R = 2.0
 
-    max_iter = int(input("max_iter (32-256): ") or "32")
+    max_iter = read_int("max_iter (32-256): ", default="32")
     if max_iter < 32:
         max_iter = 32
     elif max_iter > 256:
@@ -128,7 +178,7 @@ def main():
     print("CMAPS:")
     for i in range(len(CMAPS)):
         print(str(i + 1) + " " + CMAPS[i][0])
-    cm_idx = int(input("Select (1-" + str(len(CMAPS)) + "): ")) - 1
+    cm_idx = read_int("Select (1-" + str(len(CMAPS)) + "): ") - 1
     if cm_idx < 0 or cm_idx >= len(CMAPS):
         cm_idx = 0
     cm_name, RC, GC, BC = CMAPS[cm_idx]

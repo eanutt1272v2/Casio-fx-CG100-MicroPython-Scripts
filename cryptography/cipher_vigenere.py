@@ -6,6 +6,56 @@ except ImportError:
     getkey = None
 
 
+def read_text(prompt, default=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw:
+            return raw
+        if default is not None:
+            return default
+        print("Please enter a value.")
+
+
+def read_int(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = int(raw)
+            except ValueError:
+                print("Invalid integer. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
+def read_float(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = float(raw)
+            except ValueError:
+                print("Invalid number. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
 def vigenere(text, key, decode=False):
     key = key.upper()
     result = ""
@@ -49,16 +99,16 @@ def wait_for_exit():
 def main():
     while True:
         print("1=Encode  2=Decode  3=Freq analysis  4=Index of coincidence  0=quit")
-        m = input("> ")
+        m = read_text("> ")
         if m == "0":
             break
         if m in ("1", "2"):
-            txt = input("Text: ")
-            key = input("Key: ")
+            txt = read_text("Text: ")
+            key = read_text("Key: ")
             out = vigenere(txt, key, decode=(m == "2"))
             print("Result:", out)
         elif m == "3":
-            txt = input("Ciphertext: ")
+            txt = read_text("Ciphertext: ")
             freqs = freq_analysis(txt)
             letters = [chr(65 + i) for i in range(26)]
             xs = list(range(26))
@@ -79,7 +129,7 @@ def main():
             print("Top 5:", [(top[i][1], round(top[i][0], 1)) for i in range(5)])
             print("English IC~0.065. Random~0.038")
         elif m == "4":
-            txt = input("Ciphertext: ")
+            txt = read_text("Ciphertext: ")
             ic = index_of_coincidence(txt)
             print("IC =", round(ic, 5))
             print("English IC ~ 0.0650")

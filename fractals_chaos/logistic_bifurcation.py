@@ -14,7 +14,6 @@ def wait_for_exit():
 
 
 def main():
-
     r_min = 2.5
     r_max = 4.0
     W = 384

@@ -3,6 +3,57 @@ try:
 except ImportError:
     getkey = None
 
+
+def read_text(prompt, default=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw:
+            return raw
+        if default is not None:
+            return default
+        print("Please enter a value.")
+
+
+def read_int(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = int(raw)
+            except ValueError:
+                print("Invalid integer. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
+def read_float(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = float(raw)
+            except ValueError:
+                print("Invalid number. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
 RAM = {
     "H": 1.008,
     "He": 4.003,
@@ -87,18 +138,18 @@ def main():
     while True:
         print("1=Molar mass  2=Moles/mass/Mr  3=Concentration")
         print("4=Ideal gas PV=nRT  5=Titration  6=% composition  0=quit")
-        m = input("> ")
+        m = read_text("> ")
         if m == "0":
             break
         if m == "1":
-            f = input("Formula (e.g. H2SO4): ")
+            f = read_text("Formula (e.g. H2SO4): ")
             Mr = molar_mass(f)
             print("Mr(" + f + ") =", round(Mr, 3), "g/mol")
         elif m == "2":
             print("n=mass/Mr. Enter 0 for unknown.")
-            mass = float(input("Mass (g, 0=?): ") or 0)
-            Mr = float(input("Mr (0=?): ") or 0)
-            n = float(input("Moles n (0=?): ") or 0)
+            mass = read_float("Mass (g, 0=?): ", default=0)
+            Mr = read_float("Mr (0=?): ", default=0)
+            n = read_float("Moles n (0=?): ", default=0)
             if not mass:
                 mass = n * Mr
             if not Mr and n:
@@ -116,9 +167,9 @@ def main():
             )
         elif m == "3":
             print("c=n/V. Enter 0 for unknown.")
-            c = float(input("Conc c (mol/dm3, 0=?): ") or 0)
-            n = float(input("Moles n (0=?): ") or 0)
-            V = float(input("Volume V (dm3, 0=?): ") or 0)
+            c = read_float("Conc c (mol/dm3, 0=?): ", default=0)
+            n = read_float("Moles n (0=?): ", default=0)
+            V = read_float("Volume V (dm3, 0=?): ", default=0)
             if not c and n and V:
                 c = n / V
             if not n and c and V:
@@ -137,10 +188,10 @@ def main():
         elif m == "4":
             R = 8.314
             print("PV=nRT. R=8.314 J/(mol K). 0=unknown.")
-            P = float(input("P (Pa, 0=?): ") or 0)
-            V = float(input("V (m3, 0=?): ") or 0)
-            n = float(input("n (mol, 0=?): ") or 0)
-            T = float(input("T (K, 0=?): ") or 0)
+            P = read_float("P (Pa, 0=?): ", default=0)
+            V = read_float("V (m3, 0=?): ", default=0)
+            n = read_float("n (mol, 0=?): ", default=0)
+            T = read_float("T (K, 0=?): ", default=0)
             if not P:
                 P = n * R * T / V
             if not V:
@@ -162,10 +213,10 @@ def main():
             )
         elif m == "5":
             print("Titration: c1V1 = c2V2")
-            c1 = float(input("c1 (0=?): ") or 0)
-            V1 = float(input("V1 cm3 (0=?): ") or 0)
-            c2 = float(input("c2 (0=?): ") or 0)
-            V2 = float(input("V2 cm3 (0=?): ") or 0)
+            c1 = read_float("c1 (0=?): ", default=0)
+            V1 = read_float("V1 cm3 (0=?): ", default=0)
+            c2 = read_float("c2 (0=?): ", default=0)
+            V2 = read_float("V2 cm3 (0=?): ", default=0)
             if not c1:
                 c1 = c2 * V2 / V1
             if not V1:
@@ -186,10 +237,10 @@ def main():
                 "cm3",
             )
         elif m == "6":
-            f = input("Formula: ")
+            f = read_text("Formula: ")
             Mr = molar_mass(f)
-            el = input("Element (e.g. O): ")
-            cnt = int(input("Count of " + el + " in formula: "))
+            el = read_text("Element (e.g. O): ")
+            cnt = read_int("Count of " + el + " in formula: ")
             pct = RAM.get(el, 0) * cnt / Mr * 100 if Mr else 0
             print("% " + el + " in " + f + " =", round(pct, 3), "%")
         input("EXE")

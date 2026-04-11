@@ -7,12 +7,62 @@ except ImportError:
     getkey = None
 
 
+def read_text(prompt, default=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw:
+            return raw
+        if default is not None:
+            return default
+        print("Please enter a value.")
+
+
+def read_int(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = int(raw)
+            except ValueError:
+                print("Invalid integer. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
+def read_float(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = float(raw)
+            except ValueError:
+                print("Invalid number. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
 print("1=sin(x)  2=cos(x)  3=e^x  4=ln(1+x)  5=arctan(x)")
-choice = input("> ")
-N = int(input("Max terms N (e.g. 8): "))
-a_str = input("x range: a to ")
+choice = read_text("> ")
+N = read_int("Max terms N (e.g. 8): ")
+a_str = read_text("x range: a to ")
 a = float(a_str)
-b = float(input("b: "))
+b = read_float("b: ")
 
 pts = 200
 xs = [a + (b - a) * i / pts for i in range(pts + 1)]

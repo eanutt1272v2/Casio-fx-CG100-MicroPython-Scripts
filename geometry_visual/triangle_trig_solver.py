@@ -6,6 +6,56 @@ except ImportError:
     getkey = None
 
 
+def read_text(prompt, default=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw:
+            return raw
+        if default is not None:
+            return default
+        print("Please enter a value.")
+
+
+def read_int(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = int(raw)
+            except ValueError:
+                print("Invalid integer. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
+def read_float(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = float(raw)
+            except ValueError:
+                print("Invalid number. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
 def deg(r):
     return r * 180 / math.pi
 
@@ -62,12 +112,12 @@ def wait_for_exit():
 def main():
     print("Enter known values (0 if unknown):")
     print("Sides: a (opp A), b (opp B), c (opp C)")
-    a = float(input("a (0=unknown): ")) or None
-    b = float(input("b (0=unknown): ")) or None
-    c = float(input("c (0=unknown): ")) or None
-    A = float(input("A degrees (0=unknown): ")) or None
-    B = float(input("B degrees (0=unknown): ")) or None
-    C = float(input("C degrees (0=unknown): ")) or None
+    a = read_float("a (0=unknown): ") or None
+    b = read_float("b (0=unknown): ") or None
+    c = read_float("c (0=unknown): ") or None
+    A = read_float("A degrees (0=unknown): ") or None
+    B = read_float("B degrees (0=unknown): ") or None
+    C = read_float("C degrees (0=unknown): ") or None
 
     a, b, c, A, B, C = solve_triangle(a, b, c, A, B, C)
     a, b, c, A, B, C = solve_triangle(a, b, c, A, B, C)

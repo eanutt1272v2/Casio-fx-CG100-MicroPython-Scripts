@@ -7,6 +7,56 @@ except ImportError:
     getkey = None
 
 
+def read_text(prompt, default=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw:
+            return raw
+        if default is not None:
+            return default
+        print("Please enter a value.")
+
+
+def read_int(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = int(raw)
+            except ValueError:
+                print("Invalid integer. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
+def read_float(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = float(raw)
+            except ValueError:
+                print("Invalid number. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
 def wait_for_exit():
     if getkey is not None:
         getkey()
@@ -15,11 +65,10 @@ def wait_for_exit():
 
 
 def main():
-
-    f1 = float(input("Freq 1 (e.g. 5): "))
-    f2 = float(input("Freq 2 (e.g. 5.5): "))
-    A1 = float(input("Amplitude 1: "))
-    A2 = float(input("Amplitude 2: "))
+    f1 = read_float("Freq 1 (e.g. 5): ")
+    f2 = read_float("Freq 2 (e.g. 5.5): ")
+    A1 = read_float("Amplitude 1: ")
+    A2 = read_float("Amplitude 2: ")
 
     N = 400
     T_end = 4.0 / min(f1, f2)

@@ -6,6 +6,56 @@ except ImportError:
     getkey = None
 
 
+def read_text(prompt, default=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw:
+            return raw
+        if default is not None:
+            return default
+        print("Please enter a value.")
+
+
+def read_int(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = int(raw)
+            except ValueError:
+                print("Invalid integer. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
+def read_float(prompt, default=None, min_value=None, max_value=None):
+    while True:
+        raw = input(prompt).strip()
+        if raw == "" and default is not None:
+            value = default
+        else:
+            try:
+                value = float(raw)
+            except ValueError:
+                print("Invalid number. Try again.")
+                continue
+        if min_value is not None and value < min_value:
+            print("Value must be >= " + str(min_value))
+            continue
+        if max_value is not None and value > max_value:
+            print("Value must be <= " + str(max_value))
+            continue
+        return value
+
+
 def wait_for_exit():
     if getkey is not None:
         getkey()
@@ -42,15 +92,15 @@ def main():
         print(str(i + 1) + ": " + names[i])
     print(str(len(names) + 1) + ": Custom")
 
-    choice = int(input("Choice: "))
+    choice = read_int("Select: ", default=0)
 
     if choice <= len(names):
         name = names[choice - 1]
         M, R = bodies[name]
     else:
         name = "Custom"
-        M = float(input("M (kg): "))
-        R = float(input("R (m): "))
+        M = read_float("M (kg): ")
+        R = read_float("R (m): ")
 
     ve = math.sqrt(2 * G * M / R)
 
