@@ -17,7 +17,7 @@ The codebase is organised semantically by topic so related scripts live together
 ## Repository Structure
 
 | Folder | Scripts | Theme | Example scripts |
-|---|---:|---|---|
+| --- | ---: | --- | --- |
 | `fractals_chaos/` | 8 | Fractals and chaotic systems | `mandelbrot_set.py`, `julia_set.py`, `burning_ship.py` |
 | `number_theory/` | 16 | Primes, modular arithmetic, integer functions | `prime_sieve_eratosthenes.py`, `chinese_remainder.py` |
 | `geometry_visual/` | 8 | Geometry calculators and curve visualization | `shapes.py`, `triangle_trig_solver.py`, `lissajous_curves.py` |
