@@ -74,7 +74,7 @@ cm_idx = int(input("Select (1-" + str(len(CMAPS)) + "): ")) - 1
 if cm_idx < 0 or cm_idx >= len(CMAPS): cm_idx = 0
 cm_name, RC, GC, BC = CMAPS[cm_idx]
 
-SCR_H=200
+SCR_H=190
 PY=10
 SZ=SCR_H-PY
 SAMP=SZ

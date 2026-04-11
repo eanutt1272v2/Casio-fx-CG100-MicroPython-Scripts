@@ -96,7 +96,7 @@ if R<=0.0:
 else:
     R=R
 
-SCR_H=200
+SCR_H=190
 PY=10
 SZ=SCR_H-PY
 SAMP=SZ
