@@ -1,6 +1,6 @@
 # Casio fx-CG100 MicroPython Scripts
 
-A scientific and mathematical library of MicroPython scripts for the Casio fx-CG100 Graphing Calculator.
+A public library of MicroPython scripts for the Casio fx-CG100, including mathematical visualisations, fractal renderers, and other calculator programs, organised by category for reuse and extension.
 
 ## Overview
 
