@@ -74,16 +74,14 @@ def draw_screen(n, row, check_ok):
 
     xs = list(range(len(row)))
     heights = [float(v) for v in row]
-    fig, ax = plt.subplots(figsize=(10, 4.8))
-    ax.bar(xs, heights, color="#4f86f7", edgecolor="#2e5dbb", linewidth=0.2)
+    plt.bar(xs, heights)
 
     ticks = sorted(set([0, n // 4, n // 2, (3 * n) // 4, n]))
-    ax.set_xticks(ticks)
-    ax.set_xlim(-0.5, len(row) - 0.5)
-    ax.grid(True, axis="y", linestyle="--", alpha=0.4)
-    ax.set_xlabel("k")
-    ax.set_ylabel("C(n, k)")
-    ax.ticklabel_format(axis="y", style="sci", scilimits=(0, 0))
+    plt.xticks(ticks)
+    plt.xlim(-0.5, len(row) - 0.5)
+    plt.grid(True)
+    plt.xlabel("k")
+    plt.ylabel("C(n, k)")
 
     status = "sum=OK" if check_ok else "sum=ERR"
     title = (
@@ -96,8 +94,9 @@ def draw_screen(n, row, check_ok):
         + " mode=linear "
         + status
     )
-    ax.set_title(title)
-    plt.tight_layout()
+    plt.title(title)
+    if hasattr(plt, "tight_layout"):
+        plt.tight_layout()
     plt.show()
 
 
