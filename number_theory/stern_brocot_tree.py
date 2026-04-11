@@ -31,5 +31,5 @@ def sb_navigate():
 
 sb_navigate()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

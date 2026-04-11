@@ -24,5 +24,5 @@ grid("on")
 text(a_val, max(ys), "p(x)")
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

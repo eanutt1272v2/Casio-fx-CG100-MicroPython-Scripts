@@ -25,5 +25,5 @@ grid("on")
 text(0, H, "v=" + str(v0) + " ang=" + str(angle))
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

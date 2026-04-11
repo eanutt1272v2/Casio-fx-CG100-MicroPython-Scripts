@@ -25,5 +25,5 @@ for row in range(96):
 
 show_screen()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

@@ -23,5 +23,5 @@ text(0, 1.73, "F(n+1)/F(n) -> phi")
 text(0, phi + 0.005, "phi=1.618...", )
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

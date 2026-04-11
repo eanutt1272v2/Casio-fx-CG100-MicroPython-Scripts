@@ -27,5 +27,5 @@ pencolor("green")
 depth = int(input("Depth (1-5): "))
 sierpinski(160, depth)
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

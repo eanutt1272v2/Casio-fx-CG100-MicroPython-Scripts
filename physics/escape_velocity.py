@@ -43,4 +43,4 @@ print("\n" + name + " Escape Velocity:")
 print(round(ve, 2), "m/s")
 print(round(ve/1000, 2), "km/s")
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")

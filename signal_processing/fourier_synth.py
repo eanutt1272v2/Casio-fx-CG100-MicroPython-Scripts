@@ -40,5 +40,5 @@ text(-math.pi+0.1, max(ys)*0.9, lbl)
 text(-math.pi+0.1, max(ys)*0.75, "Gibbs phenomenon visible at discontinuities")
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

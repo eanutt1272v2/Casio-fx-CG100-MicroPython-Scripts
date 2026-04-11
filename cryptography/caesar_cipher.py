@@ -15,5 +15,5 @@ shift = int(input("Shift: "))
 out = caesar(text, shift, decode=(mode=="d"))
 print("Result:", out)
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

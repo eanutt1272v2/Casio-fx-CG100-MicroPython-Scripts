@@ -24,5 +24,5 @@ for n in range(4, N+1, 2):
         break
 print("Done. Conjecture holds up to", N)
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

@@ -20,5 +20,5 @@ text(0, rms+0.5, "+sqrt(N)")
 text(0, -rms-2, "-sqrt(N)")
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

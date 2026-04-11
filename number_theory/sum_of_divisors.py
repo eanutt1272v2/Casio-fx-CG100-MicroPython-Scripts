@@ -28,5 +28,5 @@ for k in range(2, 1001):
     if sigma(k) == 2*k:
         print(k, end=" ")
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

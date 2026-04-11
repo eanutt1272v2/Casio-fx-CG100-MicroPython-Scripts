@@ -19,5 +19,5 @@ axis([-1.1, 1.1, -1.1, 1.1])
 text(-1.0, 1.0, "Harmonograph")
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

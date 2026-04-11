@@ -32,5 +32,5 @@ for c in seq:
     elif c == "L":
         left(90)
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

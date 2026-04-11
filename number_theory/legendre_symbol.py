@@ -37,5 +37,5 @@ else:
     elif sym == -1:
         print(str(a) + " is a non-residue mod " + str(p))
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

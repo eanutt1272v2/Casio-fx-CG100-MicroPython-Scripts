@@ -18,5 +18,5 @@ axis([1, N, 0.2, 0.8])
 text(1, 0.78, "Running mean -> 0.5")
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

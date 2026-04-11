@@ -17,5 +17,5 @@ grid("on")
 text(2, max(ys), "2d6 rolls: " + str(M))
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

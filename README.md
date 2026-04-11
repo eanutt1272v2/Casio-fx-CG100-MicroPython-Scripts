@@ -51,7 +51,7 @@ The codebase is organised semantically by topic so related scripts live together
 
 - Ensure your calculator firmware and Python/MicroPython app are installed, functioning correctly, and up to date.
 - Connect the calculator to your computer over USB.
-- Select the calculator file-transfer/storage mode so files are visible from your computer as a volume.
+- Select the calculator file-transfer/storage mode (1: USB Flash) so files are visible from your computer as a volume.
 
 #### 2. Pick a compatible script
 

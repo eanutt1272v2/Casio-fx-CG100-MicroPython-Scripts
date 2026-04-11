@@ -62,5 +62,5 @@ if a and b and c:
     print("Inradius r=",round(r_in,5))
     print("Perimeter=",round(a+b+c,5))
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

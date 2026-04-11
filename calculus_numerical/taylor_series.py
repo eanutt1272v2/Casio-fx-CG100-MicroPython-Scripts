@@ -53,5 +53,5 @@ fnames={"1":"sin","2":"cos","3":"e^x","4":"ln(1+x)","5":"arctan"}
 text(a,ymax-0.4,fnames.get(choice,"f")+" (blue=true red=N="+str(N)+")")
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

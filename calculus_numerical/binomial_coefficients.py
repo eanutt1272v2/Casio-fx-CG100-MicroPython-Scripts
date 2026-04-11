@@ -22,5 +22,5 @@ axis([-1, n+1, 0, max(row)*1.1])
 text(0, max(row), "C("+str(n)+",k)")
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

@@ -26,5 +26,5 @@ cf = cont_frac(x, 10)
 print("CF:", cf)
 convergents(cf)
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

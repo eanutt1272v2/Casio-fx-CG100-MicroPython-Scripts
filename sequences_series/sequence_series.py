@@ -59,5 +59,5 @@ while True:
         print("Sum k*r^k to n =",round(s,6))
     input("EXE")
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

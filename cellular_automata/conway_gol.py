@@ -102,5 +102,5 @@ for gen in range(1, GENS + 1):
     draw_string(0, 0, "Gen " + str(gen), (0, 0, 200), "small")
     show_screen()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

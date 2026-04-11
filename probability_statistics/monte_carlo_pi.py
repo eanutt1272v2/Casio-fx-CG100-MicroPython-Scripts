@@ -27,5 +27,5 @@ axis([0, 1, 0, 1])
 text(0, 0.95, "pi~" + str(round(pi_est, 4)))
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

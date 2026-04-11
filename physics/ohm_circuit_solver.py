@@ -40,5 +40,5 @@ elif mode == "p":
         r = rs[i]
         print("I" + str(i+1) + ":", round(V/r, 4), "A")
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

@@ -24,5 +24,5 @@ for i in range(max_iter):
 
 print("Root ~", x)
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

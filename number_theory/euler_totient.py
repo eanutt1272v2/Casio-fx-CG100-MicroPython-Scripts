@@ -24,5 +24,5 @@ grid("on")
 text(1, N-8, "Euler totient phi(n)")
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

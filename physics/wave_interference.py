@@ -22,5 +22,5 @@ grid("on")
 text(0, max(ytot), "f1=" + str(f1) + " f2=" + str(f2))
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

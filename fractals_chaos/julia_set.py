@@ -141,5 +141,5 @@ for i in range(5):
 
 ss()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

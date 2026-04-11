@@ -20,5 +20,5 @@ n = int(input("Subintervals (even, e.g. 100): "))
 result = simpson(a, b, n)
 print("Integral =", result)
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

@@ -17,5 +17,5 @@ grid("on")
 text(-1.1, 1.1, "a=" + str(a) + " b=" + str(b) + " d=" + str(int(delta*180/math.pi)))
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

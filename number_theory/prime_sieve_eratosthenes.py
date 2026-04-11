@@ -23,5 +23,5 @@ grid("on", "grey")
 text(0, N - 15, "Primes up to " + str(N))
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

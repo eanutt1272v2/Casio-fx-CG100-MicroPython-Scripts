@@ -22,5 +22,5 @@ axis("auto")
 text(min(xs), max(ys), title)
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

@@ -23,5 +23,5 @@ text(0, max(seq) - max(seq)//10,
      "n=" + str(start) + " steps=" + str(len(seq)-1))
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

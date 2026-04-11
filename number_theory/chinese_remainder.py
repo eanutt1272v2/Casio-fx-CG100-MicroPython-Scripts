@@ -45,5 +45,5 @@ if ok:
     for m in ms: M *= m
     print("(unique mod", M, ")")
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

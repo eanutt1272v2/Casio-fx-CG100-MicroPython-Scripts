@@ -22,5 +22,5 @@ for px in range(W):
 
 show_screen()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

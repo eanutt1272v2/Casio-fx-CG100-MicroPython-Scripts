@@ -13,5 +13,5 @@ print("\nHappy numbers 1-100:")
 happy = [n for n in range(1,101) if is_happy(n)]
 print(happy)
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

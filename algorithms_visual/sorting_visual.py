@@ -68,5 +68,5 @@ show_screen()
 
 input("Press any key to exit... ")
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

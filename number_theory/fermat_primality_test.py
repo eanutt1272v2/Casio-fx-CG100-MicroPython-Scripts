@@ -27,5 +27,5 @@ print("(Fermat test, 5 witnesses)")
 
 print("a^(n-1) mod n for a=2:", powmod(2, n-1, n))
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

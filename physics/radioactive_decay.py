@@ -20,5 +20,5 @@ text(0, N0, "N0=" + str(N0) + " T1/2=" + str(half_life))
 text(half_life, N0*0.1, "T_1/2")
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

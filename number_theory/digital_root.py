@@ -16,5 +16,5 @@ print("Additive persistence:", persist)
 quick = 1 + (n - 1) % 9 if n > 0 else 0
 print("Formula check:", quick)
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

@@ -16,5 +16,5 @@ else:
     if n == 6174:
         print("Reached Kaprekar constant in", step, "steps!")
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

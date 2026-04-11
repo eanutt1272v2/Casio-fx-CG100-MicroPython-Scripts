@@ -15,5 +15,5 @@ grid("on")
 text(-1.1, 1.1, "r=cos(" + str(k) + "*theta)")
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

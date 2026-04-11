@@ -22,5 +22,5 @@ grid("on")
 text(0, A, "x(t) blue, v(t) red, a(t) green")
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

@@ -25,5 +25,5 @@ for _ in range(3):
     koch(side, depth)
     right(120)
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

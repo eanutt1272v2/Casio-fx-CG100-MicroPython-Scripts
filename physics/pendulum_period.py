@@ -17,5 +17,5 @@ grid("on")
 text(0, max(Ts_large)*0.95, "blue: small-angle  red: large-angle corr")
 show()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

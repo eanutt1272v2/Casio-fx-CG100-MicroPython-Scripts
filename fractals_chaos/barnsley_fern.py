@@ -25,5 +25,5 @@ for _ in range(N):
 
 show_screen()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

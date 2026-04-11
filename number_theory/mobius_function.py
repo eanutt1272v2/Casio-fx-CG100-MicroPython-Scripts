@@ -31,5 +31,5 @@ for n in range(1, 151):
 
 show_screen()
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

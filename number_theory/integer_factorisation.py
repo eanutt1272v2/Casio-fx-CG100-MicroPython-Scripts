@@ -24,5 +24,5 @@ for p in sorted(f.keys()):
     result += str(p) + "^" + str(f[p]) + " * "
 print(result[:-3] if result else str(n) + " is 1")
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

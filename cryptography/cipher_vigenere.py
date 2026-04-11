@@ -70,5 +70,5 @@ while True:
                 break
     input("EXE")
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

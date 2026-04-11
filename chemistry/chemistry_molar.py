@@ -97,5 +97,5 @@ while True:
         print("% "+el+" in "+f+" =",round(pct,3),"%")
     input("EXE")
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 

@@ -287,4 +287,4 @@ while True:
         print("Error: " + str(exc))
     input("\nPress EXE or OK for menu: ")
 
-input("Press any key to exit: ")
+# input("Press any key to exit: ")

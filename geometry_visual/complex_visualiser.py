@@ -57,5 +57,5 @@ while True:
         axis([-1.4,1.4,-1.4,1.4]); grid("on"); show()
     input("EXE")
 
-input("\nPress any key to exit: ")
+# input("\nPress any key to exit: ")
 
