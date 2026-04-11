@@ -1,3 +1,9 @@
+try:
+    from casioplot import getkey
+except ImportError:
+    getkey = None
+
+
 def cont_frac(x, steps=12):
     coeffs = []
     for _ in range(steps):
@@ -21,10 +27,19 @@ def convergents(coeffs):
         print(i, "    ", coeffs[i], "     ", h, "/", k)
 
 
-x = float(input("x (e.g. 3.14159): "))
-cf = cont_frac(x, 10)
-print("CF:", cf)
-convergents(cf)
+def wait_for_exit():
+    if getkey is not None:
+        getkey()
+    else:
+        input("\nPress any key to exit: ")
 
-# input("\nPress any key to exit: ")
 
+def main():
+    x = float(input("x (e.g. 3.14159): "))
+    cf = cont_frac(x, 10)
+    print("CF:", cf)
+    convergents(cf)
+    wait_for_exit()
+
+
+main()

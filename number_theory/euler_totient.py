@@ -1,5 +1,11 @@
 from matplotlib.pyplot import axis, grid, scatter, show, text
 
+try:
+    from casioplot import getkey
+except ImportError:
+    getkey = None
+
+
 def phi(n):
     result = n
     p = 2
@@ -14,15 +20,25 @@ def phi(n):
         result -= result // temp
     return result
 
-N = 100
-ns = list(range(1, N+1))
-phis = [phi(n) for n in ns]
 
-scatter(ns, phis)
-axis([0, N, 0, N])
-grid("on")
-text(1, N-8, "Euler totient phi(n)")
-show()
+def wait_for_exit():
+    if getkey is not None:
+        getkey()
+    else:
+        input("\nPress any key to exit: ")
 
-# input("\nPress any key to exit: ")
 
+def main():
+    N = 100
+    ns = list(range(1, N + 1))
+    phis = [phi(n) for n in ns]
+
+    scatter(ns, phis)
+    axis([0, N, 0, N])
+    grid("on")
+    text(1, N - 8, "Euler totient phi(n)")
+    show()
+    wait_for_exit()
+
+
+main()

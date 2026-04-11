@@ -1,7 +1,14 @@
 from math import sin
 
+try:
+    from casioplot import getkey
+except ImportError:
+    getkey = None
+
+
 def f(x):
     return sin(x)
+
 
 def simpson(a, b, n):
     if n % 2 == 1:
@@ -13,12 +20,22 @@ def simpson(a, b, n):
         total += coeff * f(a + i * h)
     return total * h / 3
 
-a = float(input("Lower limit a: "))
-b = float(input("Upper limit b: "))
-n = int(input("Subintervals (even, e.g. 100): "))
 
-result = simpson(a, b, n)
-print("Integral =", result)
+def wait_for_exit():
+    if getkey is not None:
+        getkey()
+    else:
+        input("\nPress any key to exit: ")
 
-# input("\nPress any key to exit: ")
 
+def main():
+    a = float(input("Lower limit a: "))
+    b = float(input("Upper limit b: "))
+    n = int(input("Subintervals (even, e.g. 100): "))
+
+    result = simpson(a, b, n)
+    print("Integral =", result)
+    wait_for_exit()
+
+
+main()

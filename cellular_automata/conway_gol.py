@@ -1,6 +1,12 @@
 from casioplot import clear_screen, draw_string, set_pixel, show_screen
 import random
 
+try:
+    from casioplot import getkey
+except ImportError:
+    getkey = None
+
+
 W = 48
 H = 48
 GENS = int(input("Generations (e.g. 500): "))
@@ -10,13 +16,16 @@ DEAD = (0, 0, 0)
 
 MASK = (1 << W) - 1
 
+
 def hadd(a, b):
     return (a ^ b), (a & b)
+
 
 def fadd(a, b, c):
     s1, c1 = hadd(a, b)
     s2, c2 = hadd(s1, c)
     return s2, (c1 | c2)
+
 
 def step(grid):
     new = [0] * H
@@ -46,6 +55,7 @@ def step(grid):
         new[y] = (n3 | (n2 & rc)) & MASK
     return new
 
+
 def draw_diff(prev, curr):
     for y in range(H):
         changed = prev[y] ^ curr[y]
@@ -67,6 +77,7 @@ def draw_diff(prev, curr):
                 set_pixel(px + 1, py + 2, col)
                 set_pixel(px + 2, py + 2, col)
 
+
 def draw_all(grid):
     for y in range(H):
         row = grid[y]
@@ -78,28 +89,38 @@ def draw_all(grid):
                 for dx in range(3):
                     set_pixel(px + dx, py + dy, col)
 
-if SEED:
-    random.seed(SEED)
-grid = []
-for i in range(H):
-    r = random.randint(0, 0x3FFFFFFF)
-    r = r | (random.randint(0, 0x3FFFFFFF) << 30)
-    r = r | (random.randint(0, 0x3FFFFFFF) << 60)
-    grid.append(r & MASK)
 
-clear_screen()
-draw_all(grid)
-show_screen()
+def wait_for_exit():
+    if getkey is not None:
+        getkey()
+    else:
+        input("\nPress any key to exit: ")
 
-for gen in range(1, GENS + 1):
-    prev = grid
-    grid = step(grid)
-    draw_diff(prev, grid)
-    for dy in range(10):
-        for dx in range(72):
-            set_pixel(dx, dy, (200, 200, 200))
-    draw_string(0, 0, "Gen " + str(gen), (0, 0, 200), "small")
+
+def main():
+    if SEED:
+        random.seed(SEED)
+    grid = []
+    for i in range(H):
+        r = random.randint(0, 0x3FFFFFFF)
+        r = r | (random.randint(0, 0x3FFFFFFF) << 30)
+        r = r | (random.randint(0, 0x3FFFFFFF) << 60)
+        grid.append(r & MASK)
+
+    clear_screen()
+    draw_all(grid)
     show_screen()
 
-# input("\nPress any key to exit: ")
+    for gen in range(1, GENS + 1):
+        prev = grid
+        grid = step(grid)
+        draw_diff(prev, grid)
+        for dy in range(10):
+            for dx in range(72):
+                set_pixel(dx, dy, (200, 200, 200))
+        draw_string(0, 0, "Gen " + str(gen), (0, 0, 200), "small")
+        show_screen()
+    wait_for_exit()
 
+
+main()

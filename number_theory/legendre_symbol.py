@@ -1,3 +1,9 @@
+try:
+    from casioplot import getkey
+except ImportError:
+    getkey = None
+
+
 def powmod(base, exp, mod):
     result = 1
     base %= mod
@@ -8,34 +14,49 @@ def powmod(base, exp, mod):
         base = base * base % mod
     return result
 
+
 def is_prime(n):
-    if n < 2: return False
-    if n == 2: return True
-    if n % 2 == 0: return False
+    if n < 2:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
     i = 3
-    while i*i <= n:
-        if n % i == 0: return False
+    while i * i <= n:
+        if n % i == 0:
+            return False
         i += 2
     return True
 
-a = int(input("a: "))
-p = int(input("p (odd prime): "))
 
-if not is_prime(p) or p == 2:
-    print("p must be an odd prime.")
-else:
-    val = powmod(a, (p-1)//2, p)
-    if val == 0:
-        sym = 0
-    elif val == 1:
-        sym = 1
+def wait_for_exit():
+    if getkey is not None:
+        getkey()
     else:
-        sym = -1
-    print("Legendre (" + str(a) + "/" + str(p) + ") =", sym)
-    if sym == 1:
-        print(str(a) + " is a quadratic residue mod " + str(p))
-    elif sym == -1:
-        print(str(a) + " is a non-residue mod " + str(p))
+        input("\nPress any key to exit: ")
 
-# input("\nPress any key to exit: ")
 
+def main():
+    a = int(input("a: "))
+    p = int(input("p (odd prime): "))
+
+    if not is_prime(p) or p == 2:
+        print("p must be an odd prime.")
+    else:
+        val = powmod(a, (p - 1) // 2, p)
+        if val == 0:
+            sym = 0
+        elif val == 1:
+            sym = 1
+        else:
+            sym = -1
+        print("Legendre (" + str(a) + "/" + str(p) + ") =", sym)
+        if sym == 1:
+            print(str(a) + " is a quadratic residue mod " + str(p))
+        elif sym == -1:
+            print(str(a) + " is a non-residue mod " + str(p))
+    wait_for_exit()
+
+
+main()

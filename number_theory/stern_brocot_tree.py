@@ -1,4 +1,11 @@
 from casioplot import clear_screen, draw_string, getkey, show_screen
+
+try:
+    from casioplot import getkey
+except ImportError:
+    getkey = None
+
+
 def sb_navigate():
     lo_n, lo_d = 0, 1
     hi_n, hi_d = 1, 0
@@ -17,7 +24,7 @@ def sb_navigate():
         clear_screen()
         draw_string(0, 0, "Stern-Brocot Navigator")
         draw_string(0, 20, msg)
-        draw_string(0, 40, "Value~" + str(round(mid_n/mid_d, 5)))
+        draw_string(0, 40, "Value~" + str(round(mid_n / mid_d, 5)))
         draw_string(0, 60, "4=left  6=right  EXE=quit")
         show_screen()
         k = getkey()
@@ -29,7 +36,17 @@ def sb_navigate():
             hi_n, hi_d = mid_n, mid_d
         step += 1
 
-sb_navigate()
 
-# input("\nPress any key to exit: ")
+def wait_for_exit():
+    if getkey is not None:
+        getkey()
+    else:
+        input("\nPress any key to exit: ")
 
+
+def main():
+    sb_navigate()
+    wait_for_exit()
+
+
+main()

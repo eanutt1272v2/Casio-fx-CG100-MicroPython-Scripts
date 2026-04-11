@@ -1,5 +1,11 @@
 import math
 
+try:
+    from casioplot import getkey
+except ImportError:
+    getkey = None
+
+
 def factorise(n):
     factors = {}
     if n < 2:
@@ -17,12 +23,22 @@ def factorise(n):
         factors[n] = factors.get(n, 0) + 1
     return factors
 
-n = int(input("Factorise n: "))
-f = factorise(n)
-result = ""
-for p in sorted(f.keys()):
-    result += str(p) + "^" + str(f[p]) + " * "
-print(result[:-3] if result else str(n) + " is 1")
 
-# input("\nPress any key to exit: ")
+def wait_for_exit():
+    if getkey is not None:
+        getkey()
+    else:
+        input("\nPress any key to exit: ")
 
+
+def main():
+    n = int(input("Factorise n: "))
+    f = factorise(n)
+    result = ""
+    for p in sorted(f.keys()):
+        result += str(p) + "^" + str(f[p]) + " * "
+    print(result[:-3] if result else str(n) + " is 1")
+    wait_for_exit()
+
+
+main()

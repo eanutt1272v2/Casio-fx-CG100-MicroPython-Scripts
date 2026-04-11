@@ -1,3 +1,9 @@
+try:
+    from casioplot import getkey
+except ImportError:
+    getkey = None
+
+
 def powmod(base, exp, mod):
     result = 1
     base %= mod
@@ -8,8 +14,10 @@ def powmod(base, exp, mod):
         base = (base * base) % mod
     return result
 
+
 def fermat_test(n, trials=5):
     import random
+
     if n < 2:
         return False
     if n == 2:
@@ -20,12 +28,22 @@ def fermat_test(n, trials=5):
             return False
     return True
 
-n = int(input("Test n for primality: "))
-result = fermat_test(n)
-print("Probably prime:", result)
-print("(Fermat test, 5 witnesses)")
 
-print("a^(n-1) mod n for a=2:", powmod(2, n-1, n))
+def wait_for_exit():
+    if getkey is not None:
+        getkey()
+    else:
+        input("\nPress any key to exit: ")
 
-# input("\nPress any key to exit: ")
 
+def main():
+    n = int(input("Test n for primality: "))
+    result = fermat_test(n)
+    print("Probably prime:", result)
+    print("(Fermat test, 5 witnesses)")
+
+    print("a^(n-1) mod n for a=2:", powmod(2, n - 1, n))
+    wait_for_exit()
+
+
+main()
