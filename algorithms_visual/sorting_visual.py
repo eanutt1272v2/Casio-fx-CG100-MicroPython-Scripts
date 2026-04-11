@@ -57,12 +57,18 @@ def read_float(prompt, default=None, min_value=None, max_value=None):
         return value
 
 
-N = read_int("Array size N (e.g. 40): ")
+def shuffle_in_place(values):
+    for i in range(len(values) - 1, 0, -1):
+        j = int(random.random() * (i + 1))
+        values[i], values[j] = values[j], values[i]
+
+
+N = read_int("Array size N (e.g. 40): ", min_value=1)
 print("1=Bubble  2=Selection  3=Insertion  4=Quicksort")
 alg = read_text("> ")
 
 arr = list(range(1, N + 1))
-random.shuffle(arr)
+shuffle_in_place(arr)
 W = 384
 H = 192
 BAR_W = max(1, W // N)
@@ -142,7 +148,7 @@ def main():
 
     draw_bars(arr)
     draw_string(
-        0, 0, "Exec Done! Total Comparisons=" + str(comps[0]), (0, 100, 0), "small"
+        0, 0, "Exec Done! Total Comparisons=" + str(comps[0]), (0, 0, 0), "small"
     )
     show_screen()
 
