@@ -76,12 +76,17 @@ def draw_screen(n, row, check_ok):
     heights = [float(v) for v in row]
     plt.bar(xs, heights)
 
-    ticks = sorted(set([0, n // 4, n // 2, (3 * n) // 4, n]))
-    plt.xticks(ticks)
-    plt.xlim(-0.5, len(row) - 0.5)
-    plt.grid(True)
-    plt.xlabel("k")
-    plt.ylabel("C(n, k)")
+    if hasattr(plt, "xlim"):
+        plt.xlim(-0.5, len(row) - 0.5)
+    elif hasattr(plt, "axis"):
+        plt.axis([0, len(row) - 1, 0, max(heights) * 1.05])
+
+    if hasattr(plt, "grid"):
+        plt.grid(True)
+    if hasattr(plt, "xlabel"):
+        plt.xlabel("k")
+    if hasattr(plt, "ylabel"):
+        plt.ylabel("C(n, k)")
 
     status = "sum=OK" if check_ok else "sum=ERR"
     title = (
@@ -94,7 +99,8 @@ def draw_screen(n, row, check_ok):
         + " mode=linear "
         + status
     )
-    plt.title(title)
+    if hasattr(plt, "title"):
+        plt.title(title)
     if hasattr(plt, "tight_layout"):
         plt.tight_layout()
     plt.show()

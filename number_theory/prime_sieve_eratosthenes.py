@@ -31,10 +31,10 @@ def main():
     print("Largest:", primes[-1])
 
     xs = list(range(len(primes)))
-    bar(xs, primes, "blue")
+    bar(xs, primes)
     axis([0, len(primes), 0, N])
     grid("on", "grey")
-    text(0, N - 15, "Primes up to " + str(N))
+    text(N / 3, N - 15, "Primes up to " + str(N))
     show()
     wait_for_exit()
 

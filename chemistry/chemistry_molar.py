@@ -1,3 +1,5 @@
+# Cannot use library re on fx-CG100
+
 try:
     from casioplot import getkey
 except ImportError:
