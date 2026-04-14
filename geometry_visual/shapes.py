@@ -133,11 +133,7 @@ def f_triangle_sss(a, b, c):
 
 def f_equilateral_triangle(s):
     require_positive(s)
-    return pack(
-        ("A", math.sqrt(3.0) * s * s / 4.0),
-        ("P", 3.0 * s),
-        ("H", math.sqrt(3.0) * s / 2.0),
-    )
+    return pack(("A", math.sqrt(3.0) * s * s / 4.0), ("P", 3.0 * s), ("H", math.sqrt(3.0) * s / 2.0))
 
 
 def f_parallelogram(b, h, side):
@@ -198,9 +194,7 @@ def f_annulus(R, r):
     require_positive(R, r)
     if R <= r:
         raise ValueError("Outer radius must be greater than inner radius")
-    return pack(
-        ("A", PI * (R * R - r * r)), ("OuterC", 2.0 * PI * R), ("InnerC", 2.0 * PI * r)
-    )
+    return pack(("A", PI * (R * R - r * r)), ("OuterC", 2.0 * PI * R), ("InnerC", 2.0 * PI * r))
 
 
 def f_cube(s):
@@ -210,11 +204,7 @@ def f_cube(s):
 
 def f_cuboid(l, w, h):
     require_positive(l, w, h)
-    return pack(
-        ("V", l * w * h),
-        ("SA", 2.0 * (l * w + l * h + w * h)),
-        ("Diag", math.sqrt(l * l + w * w + h * h)),
-    )
+    return pack(("V", l * w * h), ("SA", 2.0 * (l * w + l * h + w * h)), ("Diag", math.sqrt(l * l + w * w + h * h)))
 
 
 def f_prism(base_area, base_perimeter, length):
@@ -233,20 +223,13 @@ def f_triangular_prism(a, b, c, length):
 
 def f_cylinder(r, h):
     require_positive(r, h)
-    return pack(
-        ("V", PI * r * r * h), ("CSA", 2.0 * PI * r * h), ("SA", 2.0 * PI * r * (r + h))
-    )
+    return pack(("V", PI * r * r * h), ("CSA", 2.0 * PI * r * h), ("SA", 2.0 * PI * r * (r + h)))
 
 
 def f_cone(r, h):
     require_positive(r, h)
     slant = math.sqrt(r * r + h * h)
-    return pack(
-        ("V", PI * r * r * h / 3.0),
-        ("CSA", PI * r * slant),
-        ("SA", PI * r * (r + slant)),
-        ("Slant", slant),
-    )
+    return pack(("V", PI * r * r * h / 3.0), ("CSA", PI * r * slant), ("SA", PI * r * (r + slant)), ("Slant", slant))
 
 
 def f_frustum_cone(R, r, h):
@@ -267,11 +250,7 @@ def f_sphere(r):
 
 def f_hemisphere(r):
     require_positive(r)
-    return pack(
-        ("V", 2.0 * PI * r * r * r / 3.0),
-        ("CSA", 2.0 * PI * r * r),
-        ("SA", 3.0 * PI * r * r),
-    )
+    return pack(("V", 2.0 * PI * r * r * r / 3.0), ("CSA", 2.0 * PI * r * r), ("SA", 3.0 * PI * r * r))
 
 
 def f_pyramid(base_area, base_perimeter, h, slant):
@@ -282,9 +261,7 @@ def f_pyramid(base_area, base_perimeter, h, slant):
 
 def f_tetrahedron(s):
     require_positive(s)
-    return pack(
-        ("V", s * s * s / (6.0 * math.sqrt(2.0))), ("SA", math.sqrt(3.0) * s * s)
-    )
+    return pack(("V", s * s * s / (6.0 * math.sqrt(2.0))), ("SA", math.sqrt(3.0) * s * s))
 
 
 def f_torus(R, r):
@@ -306,10 +283,7 @@ def f_spherical_shell(R, r):
     require_positive(R, r)
     if R <= r:
         raise ValueError("Outer radius must be greater than inner radius")
-    return pack(
-        ("V", 4.0 * PI * (R * R * R - r * r * r) / 3.0),
-        ("SA", 4.0 * PI * (R * R + r * r)),
-    )
+    return pack(("V", 4.0 * PI * (R * R * R - r * r * r) / 3.0), ("SA", 4.0 * PI * (R * R + r * r)))
 
 
 SHAPES_2D = [
@@ -358,9 +332,7 @@ def clip_text(text, width):
 
 def draw_menu():
     clear_screen()
-    draw_string(
-        0, 0, "Shape Property Calculation (SELECT, 0: Exit Menu)", (0, 0, 0), "small"
-    )
+    draw_string(0, 0, "Shape Property Calculation (SELECT, 0: Exit Menu)", (0, 0, 0), "small")
     draw_string(0, 10, "--- 2D Shapes ---", (0, 0, 0), "small")
     draw_string(192, 10, "--- 3D Shapes ---", (0, 0, 0), "small")
 
@@ -382,6 +354,7 @@ def draw_menu():
         draw_string(192, y0 + i * line_h, clip_text(label, 28), (0, 0, 0), "small")
 
     show_screen()
+
 
 def wait_for_exit():
     if getkey is not None:

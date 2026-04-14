@@ -84,9 +84,7 @@ def main():
     plot(xs, seq, "blue")
     axis("auto")
     grid("on")
-    text(
-        0, max(seq) - max(seq) // 10, "n=" + str(start) + " steps=" + str(len(seq) - 1)
-    )
+    text(0, max(seq) - max(seq) // 10, "n=" + str(start) + " steps=" + str(len(seq) - 1))
     show()
     wait_for_exit()
 

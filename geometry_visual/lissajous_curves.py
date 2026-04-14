@@ -78,11 +78,7 @@ def main():
     plot(xs, ys, "blue")
     axis([-1.2, 1.2, -1.2, 1.2])
     grid("on")
-    text(
-        -1.1,
-        1.1,
-        "a=" + str(a) + " b=" + str(b) + " d=" + str(int(delta * 180 / math.pi)),
-    )
+    text(-1.1, 1.1, "a=" + str(a) + " b=" + str(b) + " d=" + str(int(delta * 180 / math.pi)))
     show()
     wait_for_exit()
 

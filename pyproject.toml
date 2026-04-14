@@ -1,0 +1,7 @@
+# compact formatting style for pyproject.toml
+
+[tool.black]
+line-length = 140
+skip-magic-trailing-comma = true
+target-version = ["py313"]
+extend-exclude = '(^|/)(\.venv|casio_env)/'

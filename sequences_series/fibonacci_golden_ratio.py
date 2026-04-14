@@ -35,11 +35,7 @@ def main():
     axis([0, len(ratios), 1.5, 1.75])
     grid("on")
     text(0, 1.73, "F(n+1)/F(n) -> phi")
-    text(
-        0,
-        phi + 0.005,
-        "phi=1.618...",
-    )
+    text(0, phi + 0.005, "phi=1.618...")
     show()
     wait_for_exit()
 

@@ -104,13 +104,7 @@ def main():
             r = cmod(a, b)
             theta = carg(a, b)
             print("Mod=", fmt(r), "Arg=", fmt((theta) * 180 / math.pi), "deg")
-            print(
-                "Polar: "
-                + str(fmt(r))
-                + "(cos"
-                + str(fmt((theta) * 180 / math.pi))
-                + "+ i sin...)"
-            )
+            print("Polar: " + str(fmt(r)) + "(cos" + str(fmt((theta) * 180 / math.pi)) + "+ i sin...)")
             conj = (a, -b)
             print("Conjugate=", a, "-", abs(b), "i")
             plot([0, a], [0, b], "blue")
@@ -141,13 +135,7 @@ def main():
             n = read_int("n: ")
             re, im = cpow(a, b, n)
             print("z^" + str(n) + " =", fmt(re), "+", fmt(im), "i")
-            print(
-                "De Moivre: |z|^n=",
-                fmt(cmod(a, b) ** n),
-                " arg*n=",
-                fmt((carg(a, b) * 180 / math.pi * n)),
-                "deg",
-            )
+            print("De Moivre: |z|^n=", fmt(cmod(a, b) ** n), " arg*n=", fmt((carg(a, b) * 180 / math.pi * n)), "deg")
         elif m == "5":
             n = read_int("n-th roots of unity: ")
             xs = [math.cos(2 * math.pi * k / n) for k in range(n)]

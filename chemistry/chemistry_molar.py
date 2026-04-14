@@ -158,15 +158,7 @@ def main():
                 Mr = mass / n
             if not n and Mr:
                 n = mass / Mr
-            print(
-                "Mass=",
-                round(mass, 4),
-                "g  Mr=",
-                round(Mr, 4),
-                "  n=",
-                round(n, 6),
-                "mol",
-            )
+            print("Mass=", round(mass, 4), "g  Mr=", round(Mr, 4), "  n=", round(n, 6), "mol")
         elif m == "3":
             print("c=n/V. Enter 0 for unknown.")
             c = read_float("Conc c (mol/dm3, 0=?): ", default=0)
@@ -178,15 +170,7 @@ def main():
                 n = c * V
             if not V and c and n:
                 V = n / c
-            print(
-                "c=",
-                round(c, 5),
-                "mol/dm3  n=",
-                round(n, 5),
-                "mol  V=",
-                round(V, 5),
-                "dm3",
-            )
+            print("c=", round(c, 5), "mol/dm3  n=", round(n, 5), "mol  V=", round(V, 5), "dm3")
         elif m == "4":
             R = 8.314
             print("PV=nRT. R=8.314 J/(mol K). 0=unknown.")
@@ -202,17 +186,7 @@ def main():
                 n = P * V / (R * T)
             if not T:
                 T = P * V / (n * R)
-            print(
-                "P=",
-                round(P, 2),
-                "Pa  V=",
-                round(V, 6),
-                "m3  n=",
-                round(n, 6),
-                "mol  T=",
-                round(T, 3),
-                "K",
-            )
+            print("P=", round(P, 2), "Pa  V=", round(V, 6), "m3  n=", round(n, 6), "mol  T=", round(T, 3), "K")
         elif m == "5":
             print("Titration: c1V1 = c2V2")
             c1 = read_float("c1 (0=?): ", default=0)
@@ -227,17 +201,7 @@ def main():
                 c2 = c1 * V1 / V2
             if not V2:
                 V2 = c1 * V1 / c2
-            print(
-                "c1=",
-                round(c1, 5),
-                "  V1=",
-                round(V1, 4),
-                "cm3  c2=",
-                round(c2, 5),
-                "  V2=",
-                round(V2, 4),
-                "cm3",
-            )
+            print("c1=", round(c1, 5), "  V1=", round(V1, 4), "cm3  c2=", round(c2, 5), "  V2=", round(V2, 4), "cm3")
         elif m == "6":
             f = read_text("Formula: ")
             Mr = molar_mass(f)

@@ -137,9 +137,7 @@ def main():
             print("Likely key length estimate:")
 
             for kl in range(1, 15):
-                sub = "".join(
-                    txt[i] for i in range(0, len(txt), kl) if txt[i].isalpha()
-                )
+                sub = "".join(txt[i] for i in range(0, len(txt), kl) if txt[i].isalpha())
                 ic_sub = index_of_coincidence(sub)
                 if ic_sub > 0.055:
                     print("  Key length", kl, "IC=", round(ic_sub, 4), "<-- likely")

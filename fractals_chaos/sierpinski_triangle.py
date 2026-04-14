@@ -1,15 +1,4 @@
-from turtle import (
-    backward,
-    forward,
-    goto,
-    hideturtle,
-    left,
-    pencolor,
-    pendown,
-    penup,
-    right,
-    speed,
-)
+from turtle import backward, forward, goto, hideturtle, left, pencolor, pendown, penup, right, speed
 
 try:
     from casioplot import getkey

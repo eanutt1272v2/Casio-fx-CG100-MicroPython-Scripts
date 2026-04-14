@@ -64,9 +64,7 @@ def shuffle_in_place(values):
 
 
 N = read_int("Array size N (e.g. 40): ", min_value=1)
-print(
-    "1=Bubble  2=Selection  3=Insertion  4=Quicksort  5=Merge  6=Bogo  7=Radix  8=Counting  9=Heap"
-)
+print("1=Bubble  2=Selection  3=Insertion  4=Quicksort  5=Merge  6=Bogo  7=Radix  8=Counting  9=Heap")
 alg = read_text("> ")
 while alg not in ("1", "2", "3", "4", "5", "6", "7", "8", "9"):
     print("Choose 1..9")
@@ -289,13 +287,7 @@ def main():
     summary = "Done comps=" + str(comps[0])
     if alg == "6":
         summary = summary + " shuf=" + str(bogo_shuffles)
-    draw_string(
-        0,
-        0,
-        summary,
-        (0, 0, 0),
-        "small",
-    )
+    draw_string(0, 0, summary, (0, 0, 0), "small")
     if bogo_limit_hit:
         draw_string(0, 10, "Bogo stopped at safety limit", (180, 0, 0), "small")
     show_screen()

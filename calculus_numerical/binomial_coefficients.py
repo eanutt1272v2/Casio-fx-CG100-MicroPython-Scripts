@@ -37,12 +37,7 @@ def read_int(prompt, default=None, min_value=None, max_value=None):
 
 
 def ask_int(prompt, default_value, minimum, maximum):
-    return read_int(
-        prompt + " [" + str(default_value) + "]: ",
-        default=default_value,
-        min_value=minimum,
-        max_value=maximum,
-    )
+    return read_int(prompt + " [" + str(default_value) + "]: ", default=default_value, min_value=minimum, max_value=maximum)
 
 
 def pascal_row(n):
@@ -89,16 +84,7 @@ def draw_screen(n, row, check_ok):
         plt.ylabel("C(n, k)")
 
     status = "sum=OK" if check_ok else "sum=ERR"
-    title = (
-        "Pascal | n="
-        + str(n)
-        + " terms="
-        + str(len(row))
-        + " max="
-        + compact_int(max_value)
-        + " mode=linear "
-        + status
-    )
+    title = "Pascal | n=" + str(n) + " terms=" + str(len(row)) + " max=" + compact_int(max_value) + " mode=linear " + status
     if hasattr(plt, "title"):
         plt.title(title)
     if hasattr(plt, "tight_layout"):
