@@ -1,86 +1,87 @@
 # Casio fx-CG100 MicroPython Scripts
 
-A public library of MicroPython scripts for the Casio fx-CG100, including mathematical visualisations, fractal renderers, and other calculator programs, organised by category for reuse and extension.
+An open-source library of standalone MicroPython scripts designed specifically for the Casio fx-CG100 calculator, covering mathematical visualisation, fractal rendering, number theory, physics simulation and modelling, and other topics and spheres of study. Scripts are aimed predominantly towards GCSE and A-level mathematics, science, and visualisation, though several fall outside those curricula, and the repository is organised by category for easy reuse and extension.
 
-## Overview
+---
 
-This repository contains a library of standalone educational and utility scripts designed for GCSE and A-level mathematics, science, and visualisation (though some are extra!).
+## Quick Start
 
-Most scripts are interactive:
+1. Connect the calculator to a computer via USB and select **USB Flash** (storage mode).
+2. Copy a `.py` script from this repository to the calculator volume.
+3. Open the Python app on the calculator, navigate to the script, and run it.
+4. Follow the on-screen prompts within the shell. Execution pauses smartly before exit so output stays visible to the user.
 
-- they ask for parameters with default values
-- they print or draw a result
-- they pause before exit so the final output stays visible
+For full setup instructions and desktop testing, see [Running Scripts](#running-scripts).
 
-The codebase is organised semantically by topic so related scripts live together.
+---
 
 ## Repository Structure
 
-| Folder | Scripts | Theme | Example scripts |
-| --- | ---: | --- | --- |
-| `fractals_chaos/` | 8 | Fractals and chaotic systems | `mandelbrot_set.py`, `julia_set.py`, `burning_ship.py` |
-| `number_theory/` | 16 | Primes, modular arithmetic, integer functions | `prime_sieve_eratosthenes.py`, `chinese_remainder.py` |
-| `geometry_visual/` | 8 | Geometry calculators and curve visualization | `shapes.py`, `triangle_trig_solver.py`, `lissajous_curves.py` |
-| `calculus_numerical/` | 7 | Calculus and numerical methods | `newton_raphson.py`, `numerical_integration.py` |
-| `physics/` | 7 | Classical physics models | `projectile_motion.py`, `simple_harmonic_motion.py` |
-| `probability_statistics/` | 4 | Random processes and distributions | `dice_roll_distribution.py`, `monte_carlo_pi.py` |
-| `cellular_automata/` | 3 | Cellular and agent automata | `conway_gol.py`, `langton_ant.py` |
-| `sequences_series/` | 3 | Integer sequences and series | `collatz_sequence.py`, `fibonacci_golden_ratio.py` |
-| `cryptography/` | 2 | Classical ciphers | `caesar_cipher.py`, `cipher_vigenere.py` |
-| `chemistry/` | 1 | Chemistry utility calculator | `chemistry_molar.py` |
-| `signal_processing/` | 1 | Fourier/audio synthesis | `fourier_synth.py` |
-| `algorithms_visual/` | 1 | Algorithm visualization | `sorting_visual.py` |
+| Folder                    | Scripts | Theme                                         | Example scripts                                               |
+| ------------------------- | ------: | --------------------------------------------- | ------------------------------------------------------------- |
+| `fractals_chaos/`         |       8 | Fractals and chaotic systems                  | `mandelbrot_set.py`, `julia_set.py`, `burning_ship.py`        |
+| `number_theory/`          |      16 | Primes, modular arithmetic, integer functions | `prime_sieve_eratosthenes.py`, `chinese_remainder.py`         |
+| `geometry_visual/`        |       8 | Geometry calculators and curve visualisation  | `shapes.py`, `triangle_trig_solver.py`, `lissajous_curves.py` |
+| `calculus_numerical/`     |       7 | Calculus and numerical methods                | `newton_raphson.py`, `numerical_integration.py`               |
+| `physics/`                |       7 | Classical physics models                      | `projectile_motion.py`, `simple_harmonic_motion.py`           |
+| `probability_statistics/` |       4 | Random processes and distributions            | `dice_roll_distribution.py`, `monte_carlo_pi.py`              |
+| `cellular_automata/`      |       3 | Cellular and agent automata                   | `conway_gol.py`, `langton_ant.py`                             |
+| `sequences_series/`       |       3 | Integer sequences and series                  | `collatz_sequence.py`, `fibonacci_golden_ratio.py`            |
+| `cryptography/`           |       2 | Classical ciphers                             | `caesar_cipher.py`, `cipher_vigenere.py`                      |
+| `chemistry/`              |       1 | Chemistry utility                             | `chemistry_molar.py`                                          |
+| `signal_processing/`      |       1 | Fourier synthesis                             | `fourier_synth.py`                                            |
+| `algorithms_visual/`      |       1 | Algorithm visualisation                       | `sorting_visual.py`                                           |
 
-## Requirements
-
-### On calculator (fx-CG100)
-
-- Casio fx-CG100 with MicroPython support (ideally latest official OS)
-- Copy the desired script(s) to the calculator storage
-
-### On desktop (for testing)
-
-- Python 3.13+
-- `casioplot` package
+---
 
 ## Running Scripts
 
-### Calculator (fx-CG100)
+### On-calculator (fx-CG100)
+
+**Requirements:**
+
+- A Casio fx-CG100 with MicroPython support and the latest official OS installed.
 
 #### 1. One-time setup
 
-- Ensure your calculator firmware and Python/MicroPython app are installed, functioning correctly, and up to date.
-- Connect the calculator to your computer over USB.
-- Select the calculator file-transfer/storage mode (1: USB Flash) so files are visible from your computer as a volume.
+1. Verify the calculator firmware and Python app are installed and up to date.
+2. Connect the calculator to a **computer** via appropriate USB data cable (mobile phones or tablets are highly advised against).
+3. Select **USB Flash** (storage mode) so the calculator appears as a mounted volume.
 
-#### 2. Pick a compatible script
+#### 2. Selecting a script
 
-- All scripts in this repository are compatible with the fx-CG100 calculator.
-- Pick scripts by topic and expected runtime as fractals and dense simulations can take longer to render.
-- For fastest on-device testing, start with default parameters and then increase complexity.
+- Every script in this repository targets the fx-CG100 and is self-contained.
+- Select by topic and expected runtime. Fractal renderers and dense simulations
+  carry significantly longer render times than algebraic or statistical scripts.
+- When testing on-device for the first time, we recommend you accept the default
+  parameters andincrease complexity only once the script runs successfully.
 
-#### 3. Transfer files
+#### 3. Transferring files
 
-- Copy the selected `.py` file from this repository to calculator storage.
-- Scripts in this repository are standalone, so you typically only need one file at a time.
-- Keep a backup copy of your calculator storage before large file updates.
+- Copy the chosen `.py` file from this repository to the calculator volume.
+- Because scripts are standalone, only one file is typically required at a time.
+- Keep a local backup of calculator storage before any large file transfer.
 
-#### 4. Run on calculator
+#### 4. Execution
 
-- Open the Python app on the calculator.
-- Browse to the transferred script.
-- Run it and follow the on-screen input prompts.
-- Most scripts pause before exit so final output remains visible.
+1. Open the Python app on the calculator.
+2. Navigate to the transferred script and run it.
+3. Follow the on-screen input prompts.
+4. The script will pause smartly before exiting so the output remains on screen for the user.
 
 #### 5. Troubleshooting
 
-- `Module not found`: The script likely uses a desktop-only package. Choose a `casioplot`-based script instead.
-- Slow render or timeout: Reduce grid size, iteration count, or other heavy numeric parameters.
-- Input/value errors: Re-run and provide values within the prompt ranges shown by the script.
+| Symptom                | Likely cause                                      | Resolution                                                                       |
+| ---------------------- | ------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `Module not found`     | Script imports a desktop-only package             | Choose a `casioplot`-based script instead                                        |
+| Slow render or timeout | Parameter values too large for on-device hardware | Reduce grid size, iteration count, or step resolution — or simply wait patiently |
+| Input or value error   | Value outside the range expected by the script    | Re-run and supply values within the ranges shown by shell prompts                |
 
-### Desktop (for testing)
+### On desktop (for testing)
 
-From the repository root:
+**Requirements:** Python 3.13 or later and the `casioplot` stub package, which emulates the calculator's native graphics API.
+
+Run any script directly from the repository root:
 
 ```bash
 python3 fractals_chaos/mandelbrot_set.py
@@ -88,12 +89,29 @@ python3 geometry_visual/shapes.py
 python3 number_theory/prime_sieve_eratosthenes.py
 ```
 
-If using a virtual environment:
+If working inside a virtual environment:
 
 ```bash
 ./casio_env/bin/python geometry_visual/shapes.py
 ```
 
-## Note
+---
 
-- These scripts are educational tools, not production scientific software.
+## Important Notes
+
+These scripts are educational and intellectual tools. They are **not** intended as production-quality
+scientific software and have not been rigorously tested and validated to the standard required for
+research or professional use.
+
+---
+
+## Licence
+
+This repository is released under the [MIT Licence](LICENSE).
+
+You are free to use, copy, modify, merge, publish, distribute, sublicense,
+and sell copies of the scripts, provided the original copyright notice and
+this licence notice are retained in all copies or substantial portions of the
+software.
+
+See the [LICENSE](LICENSE) file in the repository root for the complete licence text.
