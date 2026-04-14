@@ -1,4 +1,4 @@
-from math import exp, log, pi, sin
+from math import log, pi, sin
 
 _LC = (
     0.99999999999980993,

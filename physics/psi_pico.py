@@ -1,7 +1,7 @@
 # Visualise hydrogenic wavefunctions on Casio fx-CG100.
 
 from casioplot import clear_screen, draw_string, set_pixel, show_screen
-from math import sqrt, log, exp, pi
+from math import sqrt, log, exp, pi, cos, sin
 
 from psi_pico_support import CMAPS, cmap, fmt_density, lgamma, read_float, read_int, wait_for_exit
 
@@ -11,12 +11,14 @@ except ImportError:
     getkey = None
 
 
-n = read_int("n (1..k): ")
-l = read_int("l (0..n-1): ")
-m = read_int("|m| (0..l): ")
+n = read_int("n (1..k): ", min_value=1)
+l = read_int("l (0..n-1): ", min_value=0, max_value=n - 1)
+m = read_int("m (-l..l): ", min_value=-l, max_value=l)
+phi_deg = read_float("phi_deg (real Ylm, default=33): ", default=33.0)
+phi_slice = phi_deg * pi / 180.0
 Z = read_float("Z (1=H): ")
 R = read_float("R [a0] (0=auto): ")
-exposure = read_float("exposure 0=auto +>bright: ")
+exposure = read_float("exposure (bright adj.): ")
 
 print("CMAPS:")
 for i in range(len(CMAPS)):
@@ -26,15 +28,6 @@ if cm_idx < 0 or cm_idx >= len(CMAPS):
     cm_idx = 0
 cm_name, RC, GC, BC = CMAPS[cm_idx]
 
-if n < 1:
-    n = 1
-if l < 0:
-    l = 0
-if l > n - 1:
-    l = n - 1
-m = abs(m)
-if m > l:
-    m = l
 if Z <= 0.0:
     Z = 1.0
 
@@ -42,7 +35,7 @@ if R <= 0.0:
     r_exp = (3.0 * n * n - l * (l + 1)) / (2.0 * Z)
     if r_exp <= 0.0:
         r_exp = 3.0 * n * n / Z
-    R = 1.5 * r_exp
+    R = 1.75 * r_exp
 else:
     R = R
 
@@ -65,7 +58,7 @@ alpha_l = 2 * l + 1
 rho_k = 2.0 * Z / (n * a0)
 log_norm_r = 0.5 * (3 * log(rho_k) + lgamma(n - l) - log(2.0 * n) - lgamma(n + l + 1))
 log_norm_y = 0.5 * (log((2 * l + 1) / (4 * pi)) + lgamma(l - m + 1) - lgamma(l + m + 1))
-if m > 0:
+if m != 0:
     log_norm_y += 0.5 * log(2.0)
 y_norm = exp(log_norm_y)
 
@@ -93,6 +86,15 @@ def al(ll, mm, x):
     return pmmp1
 
 
+def al_signed(ll, mm, x):
+    if mm >= 0:
+        return al(ll, mm, x)
+    mp = -mm
+    sign = -1.0 if (mp % 2) else 1.0
+    scale = sign * exp(lgamma(ll - mp + 1) - lgamma(ll + mp + 1))
+    return scale * al(ll, mp, x)
+
+
 def lag(p, alp, x):
     if p < 0:
         return 0.0
@@ -114,7 +116,7 @@ def density(x_c, z_c):
         if l != 0:
             return 0.0
         rv = exp(log_norm_r) * lag(p_rad, alpha_l, 0.0)
-        yv = y_norm * al(l, m, 1.0)
+        yv = y_norm * al_signed(l, m, 1.0)
         d = rv * yv
         return d * d
     r = sqrt(r2)
@@ -128,7 +130,17 @@ def density(x_c, z_c):
         ct = -1.0
     elif ct > 1.0:
         ct = 1.0
-    yv = y_norm * al(l, m, ct)
+
+    p = al_signed(l, m, ct)
+    if m == 0:
+        yv = y_norm * p
+    else:
+        phi_loc = phi_slice if x_c >= 0.0 else phi_slice + pi
+        if m > 0:
+            yv = y_norm * p * cos(m * phi_loc)
+        else:
+            yv = y_norm * p * sin((-m) * phi_loc)
+
     d = rv * yv
     return d * d
 
@@ -168,6 +180,9 @@ def main():
         + str(R)
         + " [a0] exposure="
         + str(exposure)
+        + " phi="
+        + str(phi_deg)
+        + "deg"
     )
     draw_string(0, 0, hdr, (0, 0, 160), "small")
 
