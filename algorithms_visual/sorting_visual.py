@@ -39,26 +39,6 @@ def read_int(prompt, default=None, min_value=None, max_value=None):
         return value
 
 
-def read_float(prompt, default=None, min_value=None, max_value=None):
-    while True:
-        raw = input(prompt).strip()
-        if raw == "" and default is not None:
-            value = default
-        else:
-            try:
-                value = float(raw)
-            except ValueError:
-                print("Invalid number. Try again.")
-                continue
-        if min_value is not None and value < min_value:
-            print("Value must be >= " + str(min_value))
-            continue
-        if max_value is not None and value > max_value:
-            print("Value must be <= " + str(max_value))
-            continue
-        return value
-
-
 def shuffle_in_place(values):
     for i in range(len(values) - 1, 0, -1):
         j = int(random.random() * (i + 1))
