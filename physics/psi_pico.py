@@ -189,21 +189,23 @@ def main():
             sp(sx, py, cmap(val, RC, GC, BC))
         ss()
 
+    leg_den = LEG_H - 1 if LEG_H > 1 else 1
     for py in range(LEG_H):
-        t = 1.0 - py / LEG_H
+        t = 1.0 - py / leg_den
         col = cmap(t, RC, GC, BC)
         for dx in range(LEG_W):
             sp(LEG_X + dx, PY + py, col)
 
     for i in range(5):
         t = i / 4.0
-        ty = PY + int((1.0 - t) * (LEG_H - 1))
+        ty = PY + int((1.0 - t) * leg_den)
         sp(LEG_X + LEG_W, ty, (0, 0, 0))
         sp(LEG_X + LEG_W + 1, ty, (0, 0, 0))
-        if t <= 0.0:
+        t_row = 1.0 - (ty - PY) / leg_den
+        if t_row <= 0.0:
             d_tick = 0.0
         else:
-            d_tick = peak * (t ** (1.0 / gamma)) / A0_3
+            d_tick = peak * (t_row ** (1.0 / gamma)) / A0_3
         label = fmt_density(d_tick) + " [m^-3]"
         ly = ty - 4
         if ly < PY:
