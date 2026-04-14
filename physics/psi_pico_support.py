@@ -157,11 +157,11 @@ def fmt_density(d):
     while v < 1.0:
         v *= 10.0
         exp_n -= 1
-    mantissa = int(round(v))
-    if mantissa == 10:
-        mantissa = 1
+    mantissa = round(v * 100.0) / 100.0
+    if mantissa >= 10.0:
+        mantissa /= 10.0
         exp_n += 1
-    return str(mantissa) + "e" + str(exp_n)
+    return "{:.2f}".format(mantissa) + "e" + str(exp_n)
 
 
 def wait_for_exit(getkey):

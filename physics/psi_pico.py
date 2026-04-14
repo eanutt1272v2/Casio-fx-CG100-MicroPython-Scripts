@@ -134,12 +134,12 @@ def density(x_c, z_c):
 
 
 step = 2.0 * R / (SAMP - 1)
-R_s = (SAMP + 1) // 2
 peak = EPS
-for sy in range(R_s):
+for sy in range(SAMP):
     z_c = R - step * sy
-    for sx in range(R_s):
-        d = density(step * sx, z_c)
+    for sx in range(SAMP):
+        x_c = -R + step * sx
+        d = density(x_c, z_c)
         if d > peak:
             peak = d
 
