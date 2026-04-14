@@ -1,4 +1,4 @@
-# Visualize sorting algorithms step-by-step.
+# Visualise sorting algorithms step-by-step.
 
 from casioplot import draw_string, show_screen, clear_screen, set_pixel
 import random

@@ -1,4 +1,4 @@
-# Plot logistic-map bifurcation behavior.
+# Plot logistic-map bifurcation behaviour.
 
 from casioplot import clear_screen, set_pixel, show_screen
 

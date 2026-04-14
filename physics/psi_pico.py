@@ -1,4 +1,4 @@
-# Visualize hydrogenic wavefunctions on Casio fx-CG100.
+# Visualise hydrogenic wavefunctions on Casio fx-CG100.
 
 from casioplot import clear_screen, draw_string, set_pixel, show_screen
 from math import sqrt, log, sin, exp, pi
