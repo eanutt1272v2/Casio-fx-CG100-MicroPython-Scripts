@@ -18,7 +18,7 @@ phi_deg = read_float("phi_deg (real Ylm, default=33): ", default=33.0)
 phi_slice = phi_deg * pi / 180.0
 Z = read_float("Z (1=H): ")
 R = read_float("R [a0] (0=auto): ")
-exposure = read_float("exposure (bright adj.): ")
+exposure = read_float("exposure (0=natural): ")
 
 print("CMAPS:")
 for i in range(len(CMAPS)):
