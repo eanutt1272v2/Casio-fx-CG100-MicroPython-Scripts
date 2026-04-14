@@ -1,3 +1,5 @@
+# Generate harmonograph-style drawings.
+
 from matplotlib.pyplot import axis, plot, show, text
 import math
 

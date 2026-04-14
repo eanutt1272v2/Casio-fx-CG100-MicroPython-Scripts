@@ -1,3 +1,5 @@
+# Find roots with the Newton-Raphson method.
+
 try:
     from casioplot import getkey
 except ImportError:

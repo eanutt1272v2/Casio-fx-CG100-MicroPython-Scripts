@@ -1,3 +1,5 @@
+# Check Goldbach decompositions for even numbers.
+
 try:
     from casioplot import getkey
 except ImportError:

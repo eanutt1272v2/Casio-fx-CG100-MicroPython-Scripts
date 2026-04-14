@@ -1,3 +1,5 @@
+# Compute Euler's totient function values.
+
 from matplotlib.pyplot import axis, grid, scatter, show, text
 
 try:

@@ -1,3 +1,5 @@
+# Render the Burning Ship fractal.
+
 from casioplot import clear_screen, draw_string, set_pixel, show_screen
 from math import log
 

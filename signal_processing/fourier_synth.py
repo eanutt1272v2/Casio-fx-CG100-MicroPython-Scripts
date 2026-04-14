@@ -1,3 +1,5 @@
+# Synthesize signals with Fourier components.
+
 from matplotlib.pyplot import plot, axis, grid, text, show
 import math
 

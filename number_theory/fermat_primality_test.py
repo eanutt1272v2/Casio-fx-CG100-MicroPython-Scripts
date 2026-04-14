@@ -1,3 +1,5 @@
+# Test probable primality with Fermat's method.
+
 try:
     from casioplot import getkey
 except ImportError:

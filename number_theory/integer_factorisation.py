@@ -1,3 +1,5 @@
+# Factor integers into prime factors.
+
 import math
 
 try:

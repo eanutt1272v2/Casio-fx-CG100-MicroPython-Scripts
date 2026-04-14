@@ -1,3 +1,5 @@
+# Render the Dragon curve fractal.
+
 from turtle import forward, goto, hideturtle, left, pencolor, pendown, penup, right, speed
 
 try:

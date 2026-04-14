@@ -1,3 +1,5 @@
+# Compute Legendre symbols modulo primes.
+
 try:
     from casioplot import getkey
 except ImportError:

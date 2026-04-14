@@ -1,3 +1,5 @@
+# Compute binomial coefficients numerically.
+
 import matplotlib.pyplot as plt
 
 try:

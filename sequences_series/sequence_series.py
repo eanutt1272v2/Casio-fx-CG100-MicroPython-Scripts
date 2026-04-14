@@ -1,3 +1,5 @@
+# Work with general sequences and series.
+
 from matplotlib.pyplot import plot, axis, grid, text, show
 
 try:

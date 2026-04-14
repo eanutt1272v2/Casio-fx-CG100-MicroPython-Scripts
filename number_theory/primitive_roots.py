@@ -1,3 +1,5 @@
+# Find primitive roots modulo n.
+
 try:
     from casioplot import getkey
 except ImportError:

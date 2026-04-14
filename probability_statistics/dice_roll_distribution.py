@@ -1,3 +1,5 @@
+# Simulate and summarize dice-roll distributions.
+
 from matplotlib.pyplot import axis, bar, grid, show, text
 import random
 

@@ -1,4 +1,4 @@
-# Cannot use library re on fx-CG100
+# Calculate molar masses and mole relationships.
 
 try:
     from casioplot import getkey

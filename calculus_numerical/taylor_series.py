@@ -1,3 +1,5 @@
+# Approximate functions with Taylor series expansions.
+
 from matplotlib.pyplot import plot, axis, grid, text, show
 from math import sin, cos, exp, log, atan
 

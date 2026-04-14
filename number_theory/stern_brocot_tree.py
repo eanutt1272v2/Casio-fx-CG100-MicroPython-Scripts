@@ -1,3 +1,5 @@
+# Explore fractions in the Stern-Brocot tree.
+
 from casioplot import clear_screen, draw_string, getkey, show_screen
 
 try:

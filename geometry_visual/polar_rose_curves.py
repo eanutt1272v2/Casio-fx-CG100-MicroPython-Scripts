@@ -1,3 +1,5 @@
+# Draw polar rose curves.
+
 from matplotlib.pyplot import axis, grid, plot, show, text
 import math
 

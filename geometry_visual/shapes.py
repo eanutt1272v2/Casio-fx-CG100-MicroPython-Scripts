@@ -1,3 +1,5 @@
+# Draw and explore basic geometric shapes.
+
 from casioplot import clear_screen, draw_string, show_screen
 import math
 

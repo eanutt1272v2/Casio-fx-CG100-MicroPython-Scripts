@@ -1,3 +1,5 @@
+# Render the Sierpinski triangle fractal.
+
 from turtle import backward, forward, goto, hideturtle, left, pencolor, pendown, penup, right, speed
 
 try:

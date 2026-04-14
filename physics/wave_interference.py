@@ -1,3 +1,5 @@
+# Simulate wave interference patterns.
+
 from matplotlib.pyplot import axis, grid, plot, show, text
 import math
 

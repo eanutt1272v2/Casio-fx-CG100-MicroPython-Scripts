@@ -1,3 +1,5 @@
+# Evaluate and explore continued fractions.
+
 try:
     from casioplot import getkey
 except ImportError:

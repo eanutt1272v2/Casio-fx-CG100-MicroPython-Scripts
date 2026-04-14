@@ -1,3 +1,5 @@
+# Simulate a configurable cellular automaton.
+
 from casioplot import clear_screen, set_pixel, show_screen
 
 try:

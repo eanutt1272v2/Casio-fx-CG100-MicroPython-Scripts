@@ -1,3 +1,5 @@
+# Compute sum-of-divisors arithmetic functions.
+
 try:
     from casioplot import getkey
 except ImportError:

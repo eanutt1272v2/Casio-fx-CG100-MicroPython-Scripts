@@ -1,3 +1,5 @@
+# Solve circuit values using Ohm's law.
+
 try:
     from casioplot import getkey
 except ImportError:

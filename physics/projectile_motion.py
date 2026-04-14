@@ -1,3 +1,5 @@
+# Model projectile motion trajectories.
+
 from matplotlib.pyplot import axis, grid, plot, show, text
 import math
 

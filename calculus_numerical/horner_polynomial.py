@@ -1,3 +1,6 @@
+# Evaluate polynomials using Horner's method.
+
+
 def horner(coeffs, x):
 
     result = 0

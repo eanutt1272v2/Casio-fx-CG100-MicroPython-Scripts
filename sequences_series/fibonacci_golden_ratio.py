@@ -1,3 +1,5 @@
+# Explore Fibonacci growth and the golden ratio.
+
 from matplotlib.pyplot import axis, grid, plot, show, text
 import math
 

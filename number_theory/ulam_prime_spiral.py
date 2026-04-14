@@ -1,3 +1,5 @@
+# Visualize primes on the Ulam spiral.
+
 from casioplot import clear_screen, set_pixel, show_screen
 
 try:

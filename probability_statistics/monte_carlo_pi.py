@@ -1,3 +1,5 @@
+# Estimate pi with a Monte Carlo simulation.
+
 import random
 from matplotlib.pyplot import axis, scatter, show, text
 

@@ -1,3 +1,5 @@
+# Simulate a one-dimensional random walk.
+
 from matplotlib.pyplot import axis, plot, show, text
 import math
 import random

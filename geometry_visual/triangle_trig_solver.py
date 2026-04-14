@@ -1,3 +1,5 @@
+# Solve triangles with trigonometric relationships.
+
 import math
 
 try:

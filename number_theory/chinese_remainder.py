@@ -1,3 +1,5 @@
+# Solve congruence systems with the Chinese Remainder Theorem.
+
 try:
     from casioplot import getkey
 except ImportError:

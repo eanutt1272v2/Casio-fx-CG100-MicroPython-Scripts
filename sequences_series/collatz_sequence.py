@@ -1,3 +1,5 @@
+# Generate and inspect the Collatz sequence.
+
 from matplotlib.pyplot import axis, grid, plot, show, text
 
 try:

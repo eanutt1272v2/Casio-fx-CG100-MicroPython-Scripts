@@ -1,3 +1,5 @@
+# Approximate integrals using numerical methods.
+
 from math import sin
 
 try:

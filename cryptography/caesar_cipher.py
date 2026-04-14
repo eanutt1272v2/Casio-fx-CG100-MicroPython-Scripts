@@ -1,3 +1,5 @@
+# Encrypt and decrypt text with a Caesar cipher.
+
 try:
     from casioplot import getkey
 except ImportError:

@@ -1,3 +1,5 @@
+# Encrypt and decrypt text with a Vigenere cipher.
+
 from matplotlib.pyplot import bar, axis, text, show, grid
 
 try:

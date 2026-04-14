@@ -1,3 +1,5 @@
+# Demonstrate the law of large numbers.
+
 from matplotlib.pyplot import axis, plot, show, text
 import random
 

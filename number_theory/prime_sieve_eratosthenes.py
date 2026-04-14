@@ -1,3 +1,5 @@
+# Generate primes with the Sieve of Eratosthenes.
+
 from matplotlib.pyplot import axis, bar, grid, show, text
 import math
 

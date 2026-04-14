@@ -1,3 +1,5 @@
+# Compute digital roots of integers.
+
 try:
     from casioplot import getkey
 except ImportError:

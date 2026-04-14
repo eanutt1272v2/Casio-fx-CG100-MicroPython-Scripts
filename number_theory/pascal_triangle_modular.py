@@ -1,3 +1,5 @@
+# Visualize Pascal's triangle modulo n.
+
 from casioplot import clear_screen, set_pixel, show_screen
 
 try:

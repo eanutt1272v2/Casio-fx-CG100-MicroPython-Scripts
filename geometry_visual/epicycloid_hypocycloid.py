@@ -1,3 +1,5 @@
+# Draw epicycloid and hypocycloid curves.
+
 from matplotlib.pyplot import axis, plot, show, text
 import math
 

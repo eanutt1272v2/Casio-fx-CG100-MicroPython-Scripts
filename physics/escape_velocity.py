@@ -1,3 +1,5 @@
+# Calculate escape velocity for celestial bodies.
+
 import math
 
 try:

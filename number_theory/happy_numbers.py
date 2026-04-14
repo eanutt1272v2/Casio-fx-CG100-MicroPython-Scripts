@@ -1,3 +1,5 @@
+# Determine whether numbers are happy numbers.
+
 try:
     from casioplot import getkey
 except ImportError:

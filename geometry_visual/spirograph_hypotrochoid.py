@@ -1,3 +1,5 @@
+# Draw spirograph and hypotrochoid curves.
+
 from matplotlib.pyplot import axis, plot, show, text
 import math
 

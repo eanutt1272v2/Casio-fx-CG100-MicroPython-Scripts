@@ -1,3 +1,5 @@
+# Visualize complex-plane functions and mappings.
+
 from matplotlib.pyplot import plot, axis, grid, text, scatter, show
 import math
 

@@ -1,3 +1,5 @@
+# Render the Barnsley fern fractal.
+
 from casioplot import clear_screen, set_pixel, show_screen
 import random
 

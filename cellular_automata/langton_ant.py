@@ -1,3 +1,5 @@
+# Simulate Langton's ant on a grid.
+
 from casioplot import clear_screen, set_pixel, show_screen
 
 try:

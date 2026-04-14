@@ -1,3 +1,5 @@
+# Explore the Kaprekar constant process.
+
 try:
     from casioplot import getkey
 except ImportError:

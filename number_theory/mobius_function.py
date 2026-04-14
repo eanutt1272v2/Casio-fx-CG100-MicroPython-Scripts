@@ -1,3 +1,5 @@
+# Compute values of the Mobius function.
+
 from casioplot import clear_screen, draw_string, set_pixel, show_screen
 import math
 
