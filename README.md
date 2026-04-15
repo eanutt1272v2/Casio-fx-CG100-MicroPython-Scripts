@@ -1,12 +1,12 @@
 # Casio fx-CG100 MicroPython Scripts
 
-An open-source library of standalone MicroPython scripts designed specifically for the Casio fx-CG100 calculator, covering mathematical visualisation, fractal rendering, number theory, physics simulation and modelling, and other topics and spheres of study. Scripts are aimed predominantly towards GCSE and A-level mathematics, science, and visualisation, though several fall outside those curricula, and the repository is organised by category for easy reuse and extension.
+An open-source library of standalone MicroPython scripts designed specifically for the Casio fx-CG100 calculator, covering mathematical visualisation, fractal rendering, number theory, physics simulation and modelling, utilities, other topics and spheres of study. Scripts are aimed predominantly towards GCSE and A-level mathematics, science, and visualisation, though several fall outside those curricula, and the repository is organised by category for easy reuse and extension.
 
 ---
 
 ## Quick Start
 
-1. Connect the calculator to a computer via USB and select **USB Flash** (storage mode).
+1. Connect your fx-CG100 calculator to a computer via USB and select **USB Flash** (storage mode).
 2. Copy a `.py` script from this repository to the calculator volume.
 3. Open the Python app on the calculator, navigate to the script, and run it.
 4. Follow the on-screen prompts within the shell. Execution pauses smartly before exit so output stays visible to the user.
