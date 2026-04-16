@@ -54,7 +54,7 @@ For full setup instructions and desktop testing, see [Running Scripts](#running-
 - Select by topic and expected runtime. Fractal renderers and dense simulations
   carry significantly longer render times than algebraic or statistical scripts.
 - When testing on-device for the first time, we recommend you accept the default
-  parameters andincrease complexity only once the script runs successfully.
+  parameters and increase complexity only once the script runs successfully.
 
 #### 3. Transferring files
 
