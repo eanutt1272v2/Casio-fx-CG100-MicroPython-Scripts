@@ -105,10 +105,7 @@ def main():
             a, b = float(raw[0]), float(raw[1])
             r = cmod(a, b)
             theta = carg(a, b)
-            print("Mod=", fmt(r), "Arg=", fmt((theta) * 180 / math.pi), "deg")
-            print("Polar: " + str(fmt(r)) + "(cos" + str(fmt((theta) * 180 / math.pi)) + "+ i sin...)")
             conj = (a, -b)
-            print("Conjugate=", a, "-", abs(b), "i")
             plot([0, a], [0, b], "blue")
             scatter([a], [b])
             plot([-2, 2], [0, 0], "grey")
@@ -116,6 +113,10 @@ def main():
             text(a, b, "z")
             axis([-r * 1.5, r * 1.5, -r * 1.5, r * 1.5])
             show()
+            wait_for_exit()
+            print("Mod=", fmt(r), "Arg=", fmt((theta) * 180 / math.pi), "deg")
+            print("Polar: " + str(fmt(r)) + "(cos" + str(fmt((theta) * 180 / math.pi)) + "+ i sin...)")
+            print("Conjugate=", a, "-", abs(b), "i")
         elif m == "2":
             raw = read_text("z1 = a,b: ").split(",")
             a, b = float(raw[0]), float(raw[1])
@@ -124,6 +125,7 @@ def main():
             re, im = cmul(a, b, c, d)
             print("z1*z2 =", fmt(re), "+", fmt(im), "i")
             print("Mod =", fmt(cmod(re, im)))
+            wait_for_exit()
         elif m == "3":
             raw = read_text("z1 = a,b: ").split(",")
             a, b = float(raw[0]), float(raw[1])
@@ -131,6 +133,7 @@ def main():
             c, d = float(raw[0]), float(raw[1])
             re, im = cdiv(a, b, c, d)
             print("z1/z2 =", fmt(re), "+", fmt(im), "i")
+            wait_for_exit()
         elif m == "4":
             raw = read_text("z = a,b: ").split(",")
             a, b = float(raw[0]), float(raw[1])
@@ -138,6 +141,7 @@ def main():
             re, im = cpow(a, b, n)
             print("z^" + str(n) + " =", fmt(re), "+", fmt(im), "i")
             print("De Moivre: |z|^n=", fmt(cmod(a, b) ** n), " arg*n=", fmt((carg(a, b) * 180 / math.pi * n)), "deg")
+            wait_for_exit()
         elif m == "5":
             n = read_int("n-th roots of unity: ")
             xs = [math.cos(2 * math.pi * k / n) for k in range(n)]
@@ -151,8 +155,6 @@ def main():
             axis([-1.4, 1.4, -1.4, 1.4])
             grid("on")
             show()
-        input("EXE")
-    wait_for_exit()
-
+            wait_for_exit()
 
 main()
