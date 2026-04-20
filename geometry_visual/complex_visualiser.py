@@ -104,7 +104,6 @@ def main():
         a, b = float(raw[0]), float(raw[1])
         r = cmod(a, b)
         theta = carg(a, b)
-        conj = (a, -b)
         plot([0, a], [0, b], "blue")
         scatter([a], [b])
         plot([-2, 2], [0, 0], "grey")
