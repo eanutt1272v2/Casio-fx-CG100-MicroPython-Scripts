@@ -6,10 +6,10 @@ An open-source library of standalone MicroPython scripts designed specifically f
 
 ## Quick Start
 
-1. Connect your fx-CG100 calculator to a computer via USB and select **USB Flash** (storage mode).
-2. Copy a `.py` script from this repository to the calculator volume.
-3. Open the Python app on the calculator, navigate to the script, and run it.
-4. Follow the on-screen prompts within the shell. Execution pauses smartly before exit so output stays visible to the user.
+1. Turn on the fx-CG100, connect it to a **desktop computer** via a standard USB-C data cable, and select **[USB Flash]** using the **[OK / EXE]** key when prompted.
+2. Open the mounted volume on your computer and copy the desired `.py` script from this repository directly into the storage root or a subfolder.
+3. Disconnect the cable safely, open the **Python** app from the calculator's main menu, and navigate to your script using the onboard file browser.
+4. Press **[Run]** (or **[EXE]**) and follow the on-screen prompts within the shell. Execution automatically pauses before exit to keep your output visible.
 
 For full setup instructions and desktop testing, see [Running Scripts](#running-scripts).
 
