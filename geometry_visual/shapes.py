@@ -48,7 +48,7 @@ def read_float(prompt, default=None, min_value=None, max_value=None):
             try:
                 value = float(raw)
             except ValueError:
-                print("Invalid number. Try again.")
+                print("Invalid float. Try again.")
                 continue
         if min_value is not None and value < min_value:
             print("Value must be >= " + str(min_value))
@@ -104,23 +104,36 @@ def wait_for_exit():
 def main():
     while True:
         draw_menu()
+        
+        if getkey is not None:
+            getkey()
+        else:
+            input("\nPress EXE to enter Selection console...")
+            
+        clear_screen()
+        
         try:
-            choice = read_int("SELECT (0: Exit Menu): ", default="0")
+            choice = read_int("SELECT (0: Exit Menu): ", default=0)
             if choice == 0:
                 break
             if choice < 0 or choice > len(SHAPES):
                 raise ValueError("SELECTION out of range")
+                
             label, func, params = SHAPES[choice - 1]
             args = []
             for p in params:
                 args.append(read_float(p + ": "))
+                
             results = func(*args)
             print("\n-- " + label + " --")
             for r in results:
                 print(r)
+                
         except Exception as exc:
             print("Error: " + str(exc))
+            
         input("\nPress EXE or OK for menu: ")
+        
     wait_for_exit()
 
 
