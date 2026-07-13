@@ -186,15 +186,6 @@ def _al(ll, mm, x):
     return pmmp1
 
 
-def _al_signed(ll, mm, x):
-    if mm >= 0:
-        return _al(ll, mm, x)
-    mp = -mm
-    sign = -1.0 if (mp % 2) else 1.0
-    scale = sign * exp(lgamma(ll - mp + 1) - lgamma(ll + mp + 1))
-    return scale * _al(ll, mp, x)
-
-
 def _lag(p, alp, x):
     if p < 0:
         return 0.0
@@ -215,6 +206,7 @@ class HydrogenicWavefunction:
         self.n = n
         self.l = l
         self.m = m
+        self.abs_m = abs(m)
         self.plane_choice = plane_choice
         self.offset = offset
         self.phi_slice = phi_slice
@@ -224,10 +216,18 @@ class HydrogenicWavefunction:
         self.rho_k = 2.0 * Z / n
         
         self.log_norm_r = 0.5 * (3 * log(self.rho_k) + lgamma(n - l) - log(2.0 * n) - lgamma(n + l + 1))
-        self.log_norm_y = 0.5 * (log((2 * l + 1) / (4 * pi)) + lgamma(l - m + 1) - lgamma(l + m + 1))
+        self.norm_r = exp(self.log_norm_r)
+        
+        self.log_norm_y = 0.5 * (log((2 * l + 1) / (4 * pi)) + lgamma(l - self.abs_m + 1) - lgamma(l + self.abs_m + 1))
         if m != 0:
             self.log_norm_y += 0.5 * log(2.0)
         self.y_norm = exp(self.log_norm_y)
+
+        if m >= 0:
+            self.angular_scale = 1.0
+        else:
+            sign = -1.0 if (self.abs_m % 2) else 1.0
+            self.angular_scale = sign * exp(lgamma(l - self.abs_m + 1) - lgamma(l + self.abs_m + 1))
 
     def get_coords(self, u, v):
         if self.plane_choice == 1:
@@ -242,8 +242,8 @@ class HydrogenicWavefunction:
         if r2 <= 1e-24:
             if self.l != 0:
                 return 0.0
-            rv = exp(self.log_norm_r) * _lag(self.p_rad, self.alpha_l, 0.0)
-            yv = self.y_norm * _al_signed(self.l, self.m, 1.0)
+            rv = self.norm_r * _lag(self.p_rad, self.alpha_l, 0.0)
+            yv = self.y_norm * self.angular_scale * _al(self.l, self.abs_m, 1.0)
             d = rv * yv
             return d * d
 
@@ -253,14 +253,14 @@ class HydrogenicWavefunction:
         if ea < -700.0:
             return 0.0
 
-        rv = exp(self.log_norm_r + ea) * _lag(self.p_rad, self.alpha_l, rho)
+        rv = self.norm_r * exp(ea) * _lag(self.p_rad, self.alpha_l, rho)
         ct = z_3d / r
         if ct < -1.0:
             ct = -1.0
         elif ct > 1.0:
             ct = 1.0
 
-        p = _al_signed(self.l, self.m, ct)
+        p = self.angular_scale * _al(self.l, self.abs_m, ct)
         if self.m == 0:
             yv = self.y_norm * p
         else:
@@ -268,7 +268,6 @@ class HydrogenicWavefunction:
             if self.m > 0:
                 yv = self.y_norm * p * cos(self.m * phi_loc)
             else:
-                yv = self.y_norm * p * sin((-self.m) * phi_loc)
-
-        d = rv * yv
-        return d * d
+                yv = self.y_norm * p * sin(self.abs_m * phi_loc)
+                
+        return yv * yv * rv * rv
