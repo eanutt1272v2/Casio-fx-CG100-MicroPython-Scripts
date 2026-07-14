@@ -48,13 +48,29 @@ def read_float(prompt, default=None, min_value=None, max_value=None):
 def show_menu():
     print("\nShape Property Calculation")
     print("0. Exit")
-    print("--- 2D Shapes ---")
-    for i in range(len(SHAPES_2D)):
-        print(str(i + 1) + ". " + SHAPES_2D[i][0])
-    print("--- 3D Shapes ---")
+    
+    # --- 2D Shapes ---
+    print("\n--- 2D Shapes ---")
+    for i in range(0, len(SHAPES_2D), 2):
+        item1 = f"{i + 1}. {SHAPES_2D[i][0]}"
+        
+        if i + 1 < len(SHAPES_2D):
+            item2 = f"{i + 2}. {SHAPES_2D[i + 1][0]}"
+            print(f"{item1:<25}{item2}")
+        else:
+            print(item1)
+
+    # --- 3D Shapes ---
+    print("\n--- 3D Shapes ---")
     offset = len(SHAPES_2D)
-    for i in range(len(SHAPES_3D)):
-        print(str(offset + i + 1) + ". " + SHAPES_3D[i][0])
+    for i in range(0, len(SHAPES_3D), 2):
+        item1 = f"{offset + i + 1}. {SHAPES_3D[i][0]}"
+        
+        if i + 1 < len(SHAPES_3D):
+            item2 = f"{offset + i + 2}. {SHAPES_3D[i + 1][0]}"
+            print(f"{item1:<25}{item2}")
+        else:
+            print(item1)
 
 
 def main():
