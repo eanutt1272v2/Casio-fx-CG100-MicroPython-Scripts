@@ -1,4 +1,4 @@
-# Casio fx-CG100 MicroPython Scripts
+# fx-cg100-embedded-sci-library
 
 An open-source library of optimised MicroPython scripts designed specifically for the Casio fx-CG100 calculator, and includes mathematical visualisation, fractal rendering, number theory lattices, and physical simulation modeling.
 
