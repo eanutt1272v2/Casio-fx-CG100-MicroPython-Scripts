@@ -64,7 +64,7 @@ for i in range(len(cmap_data)):
     print(str(i + 1) + ": " + cmap_data[i])
 cm_idx = (
     read_int(
-        "Select (1-" + str(len(cmap_data)) + ", default=6): ",
+        "select (1-" + str(len(cmap_data)) + ", default=6): ",
         min_value=1,
         max_value=len(cmap_data),
         default=6,
