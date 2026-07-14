@@ -1,4 +1,4 @@
-# Visualise hydrogenic wavefunctions on the Casio fx-CG100.
+# Visualise hydrogenic wavefunction probability densities on the Casio fx-CG100.
 
 from casioplot import clear_screen, draw_string, set_pixel, show_screen
 from math import log, exp, pi, sqrt, sin, cos
@@ -52,7 +52,7 @@ if R <= 0.0:
         inner_term = 0
     r_turn = (n * n + n * sqrt(inner_term)) / Z
 
-    R = r_turn * 1.35
+    R = r_turn * 1.5
 
     abs_offset = abs(offset)
     if abs_offset > 0.0:
