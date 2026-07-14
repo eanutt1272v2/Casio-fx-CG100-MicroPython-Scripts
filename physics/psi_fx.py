@@ -20,21 +20,21 @@ n = read_int("n (default=4): ", min_value=1, default=4)
 l = read_int("l (0..n-1, default=1): ", min_value=0, max_value=n - 1, default=1)
 m = read_int("m (-l..l, default=0): ", min_value=-l, max_value=l, default=0)
 
-print("Spherical Harmonic Basis:")
-print("1: Real")
-print("2: Complex")
+print("spherical harmonic basis:")
+print("1: real")
+print("2: cplx")
 basis_choice = read_int(
-    "Select (1-2, default=1): ", min_value=1, max_value=2, default=1
+    "select (1-2, default=1): ", min_value=1, max_value=2, default=1
 )
 is_real_basis = basis_choice == 1
 basis_str = "real" if is_real_basis else "cplx"
 
-print("Slice Plane:")
+print("slice plane:")
 print("1: XZ")
 print("2: XY")
 print("3: YZ")
 plane_choice = read_int(
-    "Select (1-3, default=1): ", min_value=1, max_value=3, default=1
+    "select (1-3, default=1): ", min_value=1, max_value=3, default=1
 )
 plane_names = {1: "XZ", 2: "XY", 3: "YZ"}
 plane_str = plane_names[plane_choice]
@@ -52,14 +52,14 @@ gamma = read_float(
     "gamma (default=1.0): ", min_value=0.01, max_value=1.0, default=1.0
 )
 
-print("Prob. Density Units:")
-print("1: [a0^-3] (Atomic)")
-print("2: [m^-3] (SI Metric)")
+print("prob. density units:")
+print("1: [a0^-3] (atomic)")
+print("2: [m^-3] (SI metric)")
 unit_choice = read_int(
-    "Select (1-2, default=1): ", min_value=1, max_value=2, default=1
+    "select (1-2, default=1): ", min_value=1, max_value=2, default=1
 )
 
-print("Colour Maps:")
+print("colour maps:")
 for i in range(len(cmap_data)):
     print(str(i + 1) + ": " + cmap_data[i])
 cm_idx = (
