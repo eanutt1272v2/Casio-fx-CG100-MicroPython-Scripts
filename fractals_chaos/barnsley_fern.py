@@ -1,4 +1,4 @@
-# Render the Barnsley fern fractal.
+# Render the Barnsley fern fractal on the Casio fx-CG100.
 
 from casioplot import clear_screen, set_pixel, show_screen
 import random
