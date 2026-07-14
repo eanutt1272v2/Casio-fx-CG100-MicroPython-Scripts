@@ -180,6 +180,7 @@ def main():
                 idx = 0
 
             sp(sx, py, color_lut[idx])
+            
         ss()
 
     leg_den = LEG_H - 1 if LEG_H > 1 else 1
