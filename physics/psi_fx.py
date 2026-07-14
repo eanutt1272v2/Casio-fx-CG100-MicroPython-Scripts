@@ -16,6 +16,7 @@ try:
 except ImportError:
     getkey = None
 
+
 n = read_int("n (default=4): ", min_value=1, default=4)
 l = read_int("l (0..n-1, default=1): ", min_value=0, max_value=n - 1, default=1)
 m = read_int("m (-l..l, default=0): ", min_value=-l, max_value=l, default=0)
@@ -24,20 +25,16 @@ print("spherical harmonic basis:")
 print("1: real")
 print("2: cplx")
 basis_choice = read_int(
-    "select (1-2, default=1): ", min_value=1, max_value=2, default=1
+    "basis (1-2, default=1): ", min_value=1, max_value=2, default=1
 )
-is_real_basis = basis_choice == 1
-basis_str = "real" if is_real_basis else "cplx"
 
 print("slice plane:")
-print("1: XZ")
-print("2: XY")
-print("3: YZ")
+print("1: xz")
+print("2: xy")
+print("3: yz")
 plane_choice = read_int(
-    "select (1-3, default=1): ", min_value=1, max_value=3, default=1
+    "plane (1-3, default=1): ", min_value=1, max_value=3, default=1
 )
-plane_names = {1: "XZ", 2: "XY", 3: "YZ"}
-plane_str = plane_names[plane_choice]
 
 offset = read_float("offset [a0] (default=0.0): ", default=0.0)
 phi_deg = read_float("phi_deg (default=0.0): ", default=0.0)
@@ -54,25 +51,27 @@ gamma = read_float(
 
 print("prob. density units:")
 print("1: [a0^-3] (atomic)")
-print("2: [m^-3] (SI metric)")
+print("2: [m^-3] (si metric)")
 unit_choice = read_int(
-    "select (1-2, default=1): ", min_value=1, max_value=2, default=1
+    "units (1-2, default=1): ", min_value=1, max_value=2, default=1
 )
 
 print("colour maps:")
-for i in range(len(cmap_registry)):
-    print(str(i + 1) + ": " + cmap_registry[i])
-cm_idx = (
-    read_int(
-        "select (1-" + str(len(cmap_registry)) + ", default=6): ",
-        min_value=1,
-        max_value=len(cmap_registry),
-        default=6,
-    )
-    - 1
+for idx in range(len(cmap_registry)):
+    print(str(idx + 1) + ": " + cmap_registry[idx][0])
+cm_choice = read_int(
+    "palette (1-8, default=6): ", min_value=1, max_value=8, default=6
 )
 
-cm_name, RC, GC, BC = cmap_registry[cm_idx]
+
+basis_map = {1: "real", 2: "cplx"}
+basis_str = basis_map[basis_choice]
+
+plane_map = {1: "xz", 2: "xy", 3: "yz"}
+plane_str = plane_map[plane_choice]
+
+cm_idx = cm_choice - 1
+cm_str, RC, GC, BC = cmap_registry[cm_idx]
 
 if R <= 0.0:
     inner_term = n * n - l * (l + 1)
@@ -99,10 +98,11 @@ unit_scale = A0_3 if unit_choice == 2 else 1.0
 unit_str = " [m^-3]" if unit_choice == 2 else " [a0^-3]"
 
 wf = HydrogenicWavefunction(
-    n, l, m, Z, phi_slice, plane_choice, offset, is_real=is_real_basis
+    n, l, m, Z, phi_slice, plane_choice, offset, is_real=(basis_choice == 1)
 )
 step = 2.0 * R / (SAMP - 1)
 density_3d_local = wf.density_3d
+
 
 if l == 0:
     peak = density_3d_local(0.0, 0.0, 0.0)
@@ -165,7 +165,7 @@ def main():
         + " off:"
         + str(offset)
         + " "
-        + cm_name
+        + cm_str
         + " R="
         + str(int(R) if R == int(R) else round(R, 1))
         + " k="
@@ -233,5 +233,4 @@ def main():
     wait_for_exit(getkey)
 
 
-    main()
-    
+main()
