@@ -20,7 +20,7 @@ n = read_int("n (default=4): ", min_value=1, default=4)
 l = read_int("l (0..n-1, default=1): ", min_value=0, max_value=n - 1, default=1)
 m = read_int("m (-l..l, default=0): ", min_value=-l, max_value=l, default=0)
 
-print("Spherical Harmonics Basis:")
+print("Spherical Harmonic Basis:")
 print("1: Real")
 print("2: Complex")
 basis_choice = read_int(
@@ -39,24 +39,27 @@ plane_choice = read_int(
 plane_names = {1: "XZ", 2: "XY", 3: "YZ"}
 plane_str = plane_names[plane_choice]
 
-offset = read_float("Slice Offset [a0] (default=0.0): ", default=0.0)
+offset = read_float("offset [a0] (default=0.0): ", default=0.0)
 phi_deg = read_float("phi_deg (default=0.0): ", default=0.0)
 phi_slice = phi_deg * pi / 180.0
 
 Z = read_float("Z (default=1.0): ", min_value=0.1, default=1.0)
 R = read_float("R [a0] (0=auto, default=0.0): ", min_value=0.0, default=0.0)
+k_scale = read_float(
+    "k_scale (default=1.5): ", min_value=1.0, max_value=3.0, default=1.5
+)
 gamma = read_float(
     "gamma (default=1.0): ", min_value=0.01, max_value=1.0, default=1.0
 )
 
-print("Units:")
+print("Prob. Density Units:")
 print("1: [a0^-3] (Atomic)")
 print("2: [m^-3] (SI Metric)")
 unit_choice = read_int(
     "Select (1-2, default=1): ", min_value=1, max_value=2, default=1
 )
 
-print("Palettes:")
+print("Colour Maps:")
 for i in range(len(cmap_data)):
     print(str(i + 1) + ": " + cmap_data[i])
 cm_idx = (
@@ -76,7 +79,7 @@ if R <= 0.0:
     if inner_term < 0:
         inner_term = 0
     r_turn = (n * n + n * sqrt(inner_term)) / Z
-    R = r_turn * 1.5
+    R = r_turn * k_scale
     abs_offset = abs(offset)
     if abs_offset > 0.0:
         R = sqrt(R * R + abs_offset * abs_offset)
@@ -149,27 +152,27 @@ def main():
     Zs = str(int(Z)) if Z == int(Z) else str(Z)
 
     hdr = (
-        "Psi: "
-        + "|"
+        "|"
         + str(n)
         + str(l)
         + str(m)
-        + ">"
-        + " Z="
+        + "> Z="
         + Zs
         + " "
         + basis_str
-        + " pl:"
+        + " "
         + plane_str
         + " off:"
         + str(offset)
-        + " cm="
+        + " "
         + cm_name
         + " R="
         + str(int(R) if R == int(R) else round(R, 1))
+        + " k="
+        + str(round(k_scale, 1))
         + " g="
         + str(round(gamma, 2))
-        + " phi="
+        + " p="
         + str(int(phi_deg))
     )
 
@@ -230,4 +233,5 @@ def main():
     wait_for_exit(getkey)
 
 
-main()
+    main()
+    
