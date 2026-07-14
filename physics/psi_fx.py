@@ -1,9 +1,15 @@
-# Visualise hydrogenic wavefunction probability densities on the Casio fx-CG100.
-
 from casioplot import clear_screen, draw_string, set_pixel, show_screen
 from math import log, exp, pi, sqrt, sin, cos
 
-from psi_fx_lib import cmap_data, cmap, fmt_density, read_float, read_int, wait_for_exit, HydrogenicWavefunction
+from psi_fx_lib import (
+    cmap_data,
+    cmap,
+    fmt_density,
+    read_float,
+    read_int,
+    wait_for_exit,
+    HydrogenicWavefunction,
+)
 
 try:
     from casioplot import getkey
@@ -17,15 +23,19 @@ m = read_int("m (-l..l, default=0): ", min_value=-l, max_value=l, default=0)
 print("Spherical Harmonics Basis:")
 print("1: Real")
 print("2: Complex")
-basis_choice = read_int("Select (1-2, default=1): ", min_value=1, max_value=2, default=1)
-is_real_basis = (basis_choice == 1)
+basis_choice = read_int(
+    "Select (1-2, default=1): ", min_value=1, max_value=2, default=1
+)
+is_real_basis = basis_choice == 1
 basis_str = "real" if is_real_basis else "cplx"
 
 print("Slice Plane:")
 print("1: XZ")
 print("2: XY")
 print("3: YZ")
-plane_choice = read_int("Select (1-3, default=1): ", min_value=1, max_value=3, default=1)
+plane_choice = read_int(
+    "Select (1-3, default=1): ", min_value=1, max_value=3, default=1
+)
 plane_names = {1: "XZ", 2: "XY", 3: "YZ"}
 plane_str = plane_names[plane_choice]
 
@@ -35,17 +45,29 @@ phi_slice = phi_deg * pi / 180.0
 
 Z = read_float("Z (default=1.0): ", min_value=0.1, default=1.0)
 R = read_float("R [a0] (0=auto, default=0.0): ", min_value=0.0, default=0.0)
-gamma = read_float("gamma (default=1.0): ", min_value=0.01, max_value=1.0, default=1.0)
+gamma = read_float(
+    "gamma (default=1.0): ", min_value=0.01, max_value=1.0, default=1.0
+)
 
 print("Units:")
 print("1: [a0^-3] (Atomic)")
 print("2: [m^-3] (SI Metric)")
-unit_choice = read_int("Select (1-2, default=1): ", min_value=1, max_value=2, default=1)
+unit_choice = read_int(
+    "Select (1-2, default=1): ", min_value=1, max_value=2, default=1
+)
 
 print("Palettes:")
 for i in range(len(cmap_data)):
     print(str(i + 1) + ": " + cmap_data[i])
-cm_idx = read_int("Select (1-" + str(len(cmap_data)) + ", default=6): ", min_value=1, max_value=len(cmap_data), default=6) - 1
+cm_idx = (
+    read_int(
+        "Select (1-" + str(len(cmap_data)) + ", default=6): ",
+        min_value=1,
+        max_value=len(cmap_data),
+        default=6,
+    )
+    - 1
+)
 
 cm_name, RC, GC, BC = cmap_data[cm_idx]
 
@@ -73,7 +95,9 @@ A0_3 = A0_M * A0_M * A0_M
 unit_scale = A0_3 if unit_choice == 2 else 1.0
 unit_str = " [m^-3]" if unit_choice == 2 else " [a0^-3]"
 
-wf = HydrogenicWavefunction(n, l, m, Z, phi_slice, plane_choice, offset, is_real=is_real_basis)
+wf = HydrogenicWavefunction(
+    n, l, m, Z, phi_slice, plane_choice, offset, is_real=is_real_basis
+)
 step = 2.0 * R / (SAMP - 1)
 density_3d_local = wf.density_3d
 
@@ -110,7 +134,9 @@ else:
 
     for i in range(201):
         r = i * r_step
-        d = density_3d_local(r * sin_tm * cos_pm, r * sin_tm * sin_pm, r * cos_tm)
+        d = density_3d_local(
+            r * sin_tm * cos_pm, r * sin_tm * sin_pm, r * cos_tm
+        )
         if d > peak:
             peak = d
 
@@ -157,7 +183,7 @@ def main():
     color_lut = []
     for i in range(256):
         norm = i / 255.0
-        val = norm ** gamma
+        val = norm**gamma
         color_lut.append(cmap(val, RC, GC, BC))
 
     for sy in range(SAMP):
