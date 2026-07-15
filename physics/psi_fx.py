@@ -22,16 +22,16 @@ l = read_int("l (0..n-1, default=1): ", min_value=0, max_value=n - 1, default=1)
 m = read_int("m (-l..l, default=0): ", min_value=-l, max_value=l, default=0)
 
 print("Spherical Harmonic Basis:")
-print("1: Real")
-print("2: Complex")
+print("1: real")
+print("2: cmplx")
 basis_choice = read_int(
     "Basis (1-2, default=1): ", min_value=1, max_value=2, default=1
 )
 
 print("Slice Plane:")
-print("1: XZ")
-print("2: XY")
-print("3: YZ")
+print("1: xz")
+print("2: xy")
+print("3: yz")
 plane_choice = read_int(
     "Plane (1-3, default=1): ", min_value=1, max_value=3, default=1
 )
@@ -61,11 +61,11 @@ print("Colour Maps:")
 for idx in range(len(cmap_registry)):
     print(str(idx + 1) + ": " + cmap_registry[idx][0])
 cm_choice = read_int(
-    "Palette (1-8, default=6): ", min_value=1, max_value=8, default=6
+    "Map (1-8, default=6): ", min_value=1, max_value=8, default=6
 )
 
 
-BASIS_MAP = {1: "real", 2: "complex"}
+BASIS_MAP = {1: "real", 2: "cmplx"}
 basis_str = BASIS_MAP[basis_choice]
 
 PLANE_MAP = {1: "xz", 2: "xy", 3: "yz"}
